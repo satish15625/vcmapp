@@ -117,9 +117,7 @@
 	<!-- stats -->
 	<script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
 	<script src="{% static 'js/jquery.countup.js' %}"></script>
-	<script>
-		$('.counter').countUp();
-	</script>
+
 	<!-- //stats -->
     <!--google language-->
 	<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
@@ -136,15 +134,13 @@
 	<script src="{% static 'js/owl.carousel.js' %}"></script>
 	<script>
 		$(document).ready(function () {
-			$("#owl-demo").owlCarousel({
-
-				autoPlay: 3000, //Set AutoPlay to 3 seconds
+			$("#owl-home-page").owlCarousel({
+				autoPlay: 500, //Set AutoPlay to 3 seconds
 				autoPlay: true,
-				items: 3,
-				itemsDesktop: [991, 2],
-				itemsDesktopSmall: [414, 4]
-
+				items: 1,
+				navigation: true,
 			});
+			
 		}); 
 	</script>
 	<!-- //owl carousel -->
@@ -223,6 +219,7 @@
 	
 	<!-- smooth scrolling js -->
 	<script src="{% static 'js/SmoothScroll.min.js' %}"></script>
+	<script> $('.counter').countUp(); </script>
 	<!-- //smooth scrolling js -->
 
 </body>

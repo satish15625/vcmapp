@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import Banner
+from .models import Banner,ContactHeader,ProfessionTeam
 # Register your models here.
-admin.site.site_header = 'Villagers Grop Admin'
+admin.site.site_header = 'Villagers Group Admin Panel'
 
-admin.site.register(Banner)
+admin.register(Banner,ContactHeader,ProfessionTeam)(admin.ModelAdmin)
