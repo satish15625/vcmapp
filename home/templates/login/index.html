@@ -17,15 +17,21 @@
 		<li data-target="#myCarousel" data-slide-to="4" class=""></li>
 	</ol>
 	<div class="carousel-inner" role="listbox">
-		<div class="item active">
+		<div class="item active" style="background: -webkit-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url('{% static 'images/banner1.jpg' %}') no-repeat;">
 			<div class="container">
 				<div class="carousel-caption">
 					<div class="col-md-6 banner_left">
-						<h4>We work hard</h4>
-						<h3>Maecenas id justo iaculis sapien <span>accumsan luctus</span> aluis ipsum nibh Pellen tesque felis.</h3>
+					    {% for banners in banner%}
+						<h4>{{banners.banner_title}}</h4>
+						{% endfor %}
+						{% for banners in banner%}
+						<h3>{{banners.banner_desc}}</h3>
+						{% endfor %}
 					</div>
 					<div class="col-md-6 banner_right">
-						<p>Duis viverra laoreet ante. Curabitur in diamelit blandit tellus sollicitudin sollicitudin felis. Pellentesque neque, aliquam vel nunc et, mollismetus.</p>
+					    {% for banners in banner%}
+						<p>{{banners.banner_right_desc}}</p>
+						{% endfor %}
 						<div class="agileits-button top_ban_agile">
 							<a class="btn btn-primary btn-lg" href="#" data-toggle="modal" data-target="#myModal">Read More »</a>
 						</div>
@@ -34,50 +40,10 @@
 				</div>
 			</div>
 		</div>
-		<div class="item item2">
-			<div class="container">
-				<div class="carousel-caption text-center">
-					<h3>Financial Management <span>System.</span></h3>
-					<p>sagittis quis turpis vel, facilisis posuere erat. Nulla facilisi. Proin vel commodo leo. Ut mauris tortor, cursus ut massa vitae, iaculis vehicula turpis. Pellentesque blandit egestas risus, in porttitor mi sagittis sed. </p>
-					<div class="agileits-button top_ban_agile">
-						<a class="btn btn-primary btn-lg" href="#" data-toggle="modal" data-target="#myModal">Read More »</a>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="item item3">
-			<div class="container">
-				<div class="carousel-caption">
-					<h3>Business Analytics  <span>Course.</span></h3>
-					<p>sagittis quis turpis vel, facilisis posuere erat. Nulla facilisi. Proin vel commodo leo. Ut mauris tortor, cursus ut massa vitae, iaculis vehicula turpis. Pellentesque blandit egestas risus, in porttitor mi sagittis sed. Vestibulum vestibulum quis metus vitae tincidunt. </p>
-					<div class="agileits-button top_ban_agile">
-						<a class="btn btn-primary btn-lg" href="#" data-toggle="modal" data-target="#myModal">Read More »</a>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="item item4">
-			<div class="container">
-				<div class="carousel-caption text-right">
-					<h3>Strength Strategy  <span>Solutions.</span></h3>
-					<p>sagittis quis turpis vel, facilisis posuere erat. Nulla facilisi. Proin vel commodo leo. Ut mauris tortor, cursus ut massa vitae, iaculis vehicula turpis. Pellentesque blandit egestas risus, in porttitor mi sagittis sed. Vestibulum vestibulum quis metus vitae tincidunt. </p>
-					<div class="agileits-button top_ban_agile">
-						<a class="btn btn-primary btn-lg" href="#" data-toggle="modal" data-target="#myModal">Read More »</a>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="item item5">
-			<div class="container">
-				<div class="carousel-caption">
-					<h3>Support Management  <span>Service.</span></h3>
-					<p>sagittis quis turpis vel, facilisis posuere erat. Nulla facilisi. Proin vel commodo leo. Ut mauris tortor, cursus ut massa vitae, iaculis vehicula turpis. Pellentesque blandit egestas risus, in porttitor mi sagittis sed. Vestibulum vestibulum quis metus vitae tincidunt. </p>
-					<div class="agileits-button top_ban_agile">
-						<a class="btn btn-primary btn-lg" href="#" data-toggle="modal" data-target="#myModal">Read More »</a>
-					</div>
-				</div>
-			</div>
-		</div>
+		
+		
+		
+		
 	</div>
 	<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
 		<span class="fa fa-chevron-left" aria-hidden="true"></span>
@@ -90,6 +56,7 @@
 	<!-- The Modal -->
 </div>
 <!-- //banner -->
+
 
 <!-- banner bottom -->
 <div class="welcome">
@@ -140,6 +107,7 @@
 		<div class="clearfix"></div>
 	</div>
 </div>
+
 <!-- //banner bottom -->
 
 <!-- Team -->

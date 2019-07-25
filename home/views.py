@@ -1,7 +1,9 @@
 from django.shortcuts import render
-
+from .models import Banner
 def index(request):
-    return render(request,'login/index.html')
+
+    banner =Banner.objects.all() 
+    return render(request,'login/index.html',{'banner':banner})
 
 def about(request):
     return render(request,'login/about.html')

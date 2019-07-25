@@ -25,7 +25,7 @@ SECRET_KEY = 'kmxsr9lgwwr&e0nl6a$-e!x*el!1+$7cu2)f_^5&a220w!d(nd'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost','66.70.188.12']
+ALLOWED_HOSTS = ['localhost','villagersgroup.com','www.villagersgroup.com']
 
 
 # Application definition
@@ -74,7 +74,7 @@ WSGI_APPLICATION = 'developmentvillagersgroup.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-DATABASES = {
+'''DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'villagersgroup_db',
@@ -82,6 +82,17 @@ DATABASES = {
         'PASSWORD': 'root',
         'HOST': '127.0.0.1',
         'PORT': '',
+    }
+}'''
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME':'villagersgroup_db',
+        'USER':'postgres',
+        'PASSWORD':'postgres',
+        'HOST':'localhost',
+        'PORT':5432
     }
 }
 
