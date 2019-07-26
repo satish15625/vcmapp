@@ -176,7 +176,7 @@
 											<h4>{{val.client_name}}</h4>
 											<h5>{{ val.designation}}</h5>
 											<ul class="rating">
-												{% for i in range(val.rating) %}
+												{% for i in val.rating %}
 													<li><span class="fa fa-star" aria-hidden="true"></span></li>
 												{% endfor %}
 											</ul>
