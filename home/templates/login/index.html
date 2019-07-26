@@ -129,49 +129,27 @@
 	<h3 class="heading">Services</h3>
 	<div class="container-fluid">
 		<div class="services_grids">
-			<div class="col-md-3 ser_grid1">
-				<img src="{% static 'images/service1.jpg' %}" alt="service1" />
-				<div class="ser_info">
-					<i class="fa icon fa-suitcase"></i>
-					<h4> Business Strategy </h4>
-					<i class="fa fa-plus"></i>
-					<div class="clearfix"></div>
-				</div>
-				<p>Lorem ipsum dolor sit amet augueit, consectet adipiscing elit. Quisque utrisus eget libero finibus sollicitudin quisi mauris.</p>
-			</div>
-			<div class="col-md-3 ser_grid1">
-				<img src="{% static 'images/service2.jpg' %}" alt="service1" />
-				<div class="ser_info">
-					<i class="fa icon fa-money"></i>
-					<h4> Financial Solutions </h4>
-					<i class="fa fa-plus"></i>
-					<div class="clearfix"></div>
-				</div>
-				<p>Lorem ipsum dolor sit amet augueit, consectet adipiscing elit. Quisque utrisus eget libero finibus sollicitudin quisi mauris.</p>
-			</div>
-			<div class="col-md-3 ser_grid1">
-				<img src="{% static 'images/service3.jpg' %}" alt="service1" />
-				<div class="ser_info">
-					<i class="fa icon fa-cogs"></i>
-					<h4> Business Solutions </h4>
-					<i class="fa fa-plus"></i>
-					<div class="clearfix"></div>
-				</div>
-				<p>Lorem ipsum dolor sit amet augueit, consectet adipiscing elit. Quisque utrisus eget libero finibus sollicitudin quisi mauris.</p>
-			</div>
-			<div class="col-md-3 ser_grid1">
-				<img src="{% static 'images/service4.jpg' %}" alt="service1" />
-				<div class="ser_info">
-					<i class="fa icon fa-users"></i>
-					<h4> 24/7 support </h4>
-					<i class="fa fa-plus"></i>
-					<div class="clearfix"></div>
-				</div>
-				<p>Lorem ipsum dolor sit amet augueit, consectet adipiscing elit. Quisque utrisus eget libero finibus sollicitudin quisi mauris.</p>
-			</div>
+
+			{% if services %}
+				{% for val in services %}
+
+				<div class="col-md-3 ser_grid1">
+						<img src="{{ val.service_image.url }}" alt="service1" />
+						<div class="ser_info">
+							<i class="fa icon fa-suitcase"></i>
+							<h4> {{ val.service_name }} </h4>
+							{{val.service_icon}}
+							<div class="clearfix"></div>
+						</div>
+						<p>{{val.service_desc}}</p>
+					</div>
+
+				{% endfor %}
+			{% endif %}
+		
 			<div class="clearfix"> </div>
 			<div class="ser_all">
-				<a href="services.html">Show all services</a>
+				<a href="/services">Show all services</a>
 			</div>
 		</div>
 	</div>
@@ -186,66 +164,31 @@
 			<h3 class="heading">Happy Clients</h3>
 				<div class="callbacks_container">
 					<ul class="rslides callbacks callbacks1" id="slider4">
-						<li>
-							<div class="testimonial">
-								<div class="col-md-3 test_img">
-									<img src="{% static 'images/team1.jpg' %}" alt="client1" />
-								</div>
-								<div class="col-md-9 test_info">
-									<h4>Laura Elisa</h4>
-									<h5>designation</h5>
-									<ul class="rating">
-										<li><span class="fa fa-star" aria-hidden="true"></span></li>
-										<li><span class="fa fa-star" aria-hidden="true"></span></li>
-										<li><span class="fa fa-star" aria-hidden="true"></span></li>
-										<li><span class="fa fa-star" aria-hidden="true"></span></li>
-										<li><span class="fa fa-star-half-o" aria-hidden="true"></span></li>
-									</ul>
-								</div>
-								<div class="clearfix"></div>
-								<p>Donec bibendum molestie cursus. Integer ex enim, sollicitudin quisi mauris pellentesque ac in, dignissim. Vestibulum vel consequateros, a fermentum risus. Phasellus volutpat, dolor laoreet condim entum eleifend, justo turpis euismod neque, sit amet bibendum libero nisl id orci. Proin sodales cursus eros vel auctor. </p>
-							</div>
-						</li>
-						<li>
-							<div class="testimonial">
-								<div class="col-md-3 test_img">
-									<img src="{% static 'images/team2.jpg' %}" alt="client1" />
-								</div>
-								<div class="col-md-9 test_info">
-									<h4>Isabella</h4>
-									<h5>designation</h5>
-									<ul class="rating">
-										<li><span class="fa fa-star" aria-hidden="true"></span></li>
-										<li><span class="fa fa-star" aria-hidden="true"></span></li>
-										<li><span class="fa fa-star" aria-hidden="true"></span></li>
-										<li><span class="fa fa-star-half-o" aria-hidden="true"></span></li>
-										<li><span class="fa fa-star-o" aria-hidden="true"></span></li>
-									</ul>
-								</div>
-								<div class="clearfix"></div>
-								<p>Donec bibendum molestie cursus. Integer ex enim, sollicitudin quisi mauris pellentesque ac in, dignissim. Vestibulum vel consequateros, a fermentum risus. Phasellus volutpat, dolor laoreet condim entum eleifend, justo turpis euismod neque, sit amet bibendum libero nisl id orci. Proin sodales cursus eros vel auctor. </p>
-							</div>
-						</li>
-						<li>
-							<div class="testimonial">
-								<div class="col-md-3 test_img">
-									<img src="{% static 'images/team3.jpg' %}" alt="client1" />
-								</div>
-								<div class="col-md-9 test_info">
-									<h4>Johnson</h4>
-									<h5>designation</h5>
-									<ul class="rating">
-										<li><span class="fa fa-star" aria-hidden="true"></span></li>
-										<li><span class="fa fa-star" aria-hidden="true"></span></li>
-										<li><span class="fa fa-star" aria-hidden="true"></span></li>
-										<li><span class="fa fa-star" aria-hidden="true"></span></li>
-										<li><span class="fa fa-star-o" aria-hidden="true"></span></li>
-									</ul>
-								</div>
-								<div class="clearfix"></div>
-								<p>Donec bibendum molestie cursus. Integer ex enim, sollicitudin quisi mauris pellentesque ac in, dignissim. Vestibulum vel consequateros, a fermentum risus. Phasellus volutpat, dolor laoreet condim entum eleifend, justo turpis euismod neque, sit amet bibendum libero nisl id orci. Proin sodales cursus eros vel auctor. </p>
-							</div>
-						</li>
+						{% if happyclient %}
+							{% for val in happyclient %}
+
+							<li>
+									<div class="testimonial">
+										<div class="col-md-3 test_img">
+											<img src="{{ val.avatar.url }}" alt="client1" />
+										</div>
+										<div class="col-md-9 test_info">
+											<h4>{{val.client_name}}</h4>
+											<h5>{{ val.designation}}</h5>
+											<ul class="rating">
+												{% for i in range(val.rating) %}
+													<li><span class="fa fa-star" aria-hidden="true"></span></li>
+												{% endfor %}
+											</ul>
+										</div>
+										<div class="clearfix"></div>
+										<p>{{val.description}}</p>
+									</div>
+								</li>
+
+							{% endfor %}
+						{% endif %}
+						
 					</ul>
 		<div class="clearfix"> </div>
 				</div>
