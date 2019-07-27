@@ -4234,3 +4234,12 @@ h2.typoh2 {
 .goog-te-gadget .goog-te-combo {
    color: rgba(0, 0, 7, 0.815) !important;
 }
+
+li.success {
+    color: #e7ece7;
+    border: solid;
+    background-color: green;
+    text-align: center;
+    font-size: x-large;
+    font-weight: 700;
+}

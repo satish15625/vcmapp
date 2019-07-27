@@ -186,10 +186,12 @@
 											<h4>{{val.client_name}}</h4>
 											<h5>{{ val.designation}}</h5>
 											<ul class="rating">
-												
+											{% with ''|center:val.rating as range %}
+												{% for i in range %}
 													<li><span class="fa fa-star" aria-hidden="true"></span></li>
-													<li><span class="fa fa-star" aria-hidden="true"></span></li>
-												
+												{% endfor %}
+											{% endwith %}
+											
 											</ul>
 										</div>
 										<div class="clearfix"></div>
@@ -210,12 +212,20 @@
 		<div class="consulting col-md-6">
 			<h3 class="heading">Free consulting</h3>
 			<div class="wthree-contact-form">
-				<form action="#" method="post">
-					<input type="text" name="Name" placeholder="Name" required="">
-					<input type="email" class="email" name="Email" placeholder="Email" required="">
+				<form action="{% url 'home:index' %}" method="post">
+					{% csrf_token %}
+					
+					<input type="text" name="name" placeholder="Name" required="">
+					{{ form.name.errors }}
+
+					<input type="email" class="email" name="email" placeholder="Email" required="">
+					{{ form.email.errors }}
+
 					<div class="clearfix"></div>
 					<input type="text" class="number" name="number" placeholder="Phone Number" required="">
-					<textarea name="Message" placeholder="Message" required=""></textarea>
+					{{ form.number.errors }}
+
+					<textarea name="message" placeholder="Message"></textarea>
 					<input type="submit" value="SUBMIT">
 				</form>
 			</div>
