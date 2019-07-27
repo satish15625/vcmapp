@@ -4,7 +4,7 @@ view file for handling rendering action
 """
 
 
-from django.shortcuts import render,redirect
+from django.shortcuts import render, redirect
 from .models import Banner, ProfessionTeam, ServicesOffered, HappyClients
 from .forms import ConsultingForm
 from django.contrib import messages
@@ -34,14 +34,14 @@ def index(request):
 
             consultingInput.save()
 
-            messages.add_message(request,messages.SUCCESS,"Request submitted successfully")
+            messages.add_message(request, messages.SUCCESS, 'Thanks! your response submitted successfully. Our support team will connect with you in 24 Hrs.')
 
             redirect('/')
 
         else:
             return render(request, "login/index.html", {'form': consultingInput, 'banner': banner, 'professional': professional, 'services': services, 'happyclient': happyclients})
 
-    return render(request, 'login/index.html', {'form': consultingInput,'banner': banner, 'professional': professional, 'services': services, 'happyclient': happyclients})
+    return render(request, 'login/index.html', {'form': consultingInput, 'banner': banner, 'professional': professional, 'services': services, 'happyclient': happyclients})
 
 
 def about(request):
