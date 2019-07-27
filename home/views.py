@@ -17,6 +17,7 @@ def index(request):
     banner = Banner.objects.all()
 
     professional = ProfessionTeam.objects.all()
+    professional1 = ProfessionTeam.objects.all()
 
     services = ServicesOffered.objects.all()
 
