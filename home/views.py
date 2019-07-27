@@ -24,6 +24,8 @@ def index(request):
 
     consultingInput = ConsultingForm(None)
 
+    print(happyclients)
+
     if(request.method == 'POST'):
 
         consultingInput = ConsultingForm(request.POST)
