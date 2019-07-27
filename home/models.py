@@ -29,11 +29,11 @@ class ProfessionTeam(models.Model):
     description = models.TextField(null=True)
     phone_number = models.BigIntegerField()
     country_code = models.CharField(max_length=6)
-    contact_email = models.EmailField()
-    facebook_url = models.URLField()
-    twitter_url = models.URLField()
-    insta_url = models.URLField()
-    linkedin_url = models.URLField()
+    contact_email = models.EmailField(blank=True, null=True)
+    facebook_url = models.URLField(blank=True, null=True)
+    twitter_url = models.URLField(blank=True, null=True)
+    insta_url = models.URLField(blank=True, null=True)
+    linkedin_url = models.URLField(blank=True, null=True)
 
     class Meta:
         db_table = 'vg_professional_teaml'
@@ -64,7 +64,7 @@ class ServicesOffered(models.Model):
     service_name = models.CharField(max_length=30)
     service_desc = models.TextField()
     service_image = models.ImageField(upload_to='media')
-    service_icon = models.CharField(max_length=200)
+    service_icon = models.CharField(max_length=200,)
 
     class Meta:
         db_table = 'vg_service_offered'
