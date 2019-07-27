@@ -5,7 +5,7 @@ from django.db import models
 
 class Banner(models.Model):
     """
-    model class for storing banner image 
+    model class for storing banner image
 
     """
     banner_img = models.ImageField(upload_to='media')
@@ -78,4 +78,14 @@ class HappyClients(models.Model):
     description = models.TextField()
 
     class Meta:
-        db_table  = 'vg_happy_clients'
+        db_table = 'vg_happy_clients'
+
+
+class ConsultingCustomer(models.Model):
+    name = models.CharField(max_length = 50)
+    email=models.EmailField(max_length = 255)
+    number=models.CharField(max_length = 20)
+    message=models.TextField(null = True, blank = True)
+
+    class Meta:
+        db_table='vg_consulting_clients'

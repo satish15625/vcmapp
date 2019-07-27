@@ -4,13 +4,16 @@ view file for handling rendering action
 """
 
 
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import Banner, ProfessionTeam, ServicesOffered, HappyClients
+from .forms import ConsultingForm
+from django.contrib import messages
 
 
 def index(request):
 
     # home page for showing banner list and image
+
     banner = Banner.objects.all()
 
     professional = ProfessionTeam.objects.all()
@@ -19,7 +22,24 @@ def index(request):
 
     happyclients = HappyClients.objects.all()
 
-    return render(request, 'login/index.html', {'banner': banner, 'professional': professional, 'services' : services, 'happyclient' : happyclients})
+    consultingInput = ConsultingForm(None)
+
+    if(request.method == 'POST'):
+
+        consultingInput = ConsultingForm(request.POST)
+
+        if consultingInput.is_valid():
+
+            consultingInput.save()
+
+            messages.add_message(request,messages.SUCCESS,"Request submitted successfully")
+
+            redirect('/')
+
+        else:
+            return render(request, "login/index.html", {'form': consultingInput, 'banner': banner, 'professional': professional, 'services': services, 'happyclient': happyclients})
+
+    return render(request, 'login/index.html', {'form': consultingInput,'banner': banner, 'professional': professional, 'services': services, 'happyclient': happyclients})
 
 
 def about(request):
