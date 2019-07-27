@@ -5,7 +5,7 @@ view file for handling rendering action
 
 
 from django.shortcuts import render, redirect
-from .models import Banner, ProfessionTeam, ServicesOffered, HappyClients
+from .models import Banner, ProfessionTeam, ServicesOffered, HappyClients,AboutUs,SubscriptionPlans
 from .forms import ConsultingForm
 from django.contrib import messages
 
@@ -45,7 +45,9 @@ def index(request):
 
 
 def about(request):
-    return render(request, 'login/about.html')
+    aboutsContent = AboutUs.objects.all().first()
+    plans         = SubscriptionPlans.objects.all()
+    return render(request, 'login/about.html',{'about' : aboutsContent,'plans' : plans})
 
 
 def services(request):

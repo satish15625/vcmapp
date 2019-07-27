@@ -82,10 +82,40 @@ class HappyClients(models.Model):
 
 
 class ConsultingCustomer(models.Model):
-    name = models.CharField(max_length = 50)
-    email=models.EmailField(max_length = 255)
-    number=models.CharField(max_length = 20)
-    message=models.TextField(null = True, blank = True)
+    name = models.CharField(max_length=50)
+    email = models.EmailField(max_length=255)
+    number = models.CharField(max_length=20)
+    message = models.TextField(null=True,blank=True)
 
     class Meta:
-        db_table='vg_consulting_clients'
+        db_table = 'vg_consulting_clients'
+
+
+class AboutUs(models.Model):
+    title = models.CharField(max_length=25)
+    banner = models.ImageField(upload_to = "media",null=True)
+    heading = models.CharField(max_length=50)
+    description = models.TextField(null=True, blank=True)
+    per_mangemt = models.IntegerField()
+    per_marketing = models.IntegerField()
+    per_stratergy = models.IntegerField()
+    per_deployment = models.IntegerField()
+
+    class Meta:
+        db_table = "vg_about_us"
+
+
+class SubscriptionPlans(models.Model):
+    plan_name = models.CharField(max_length=25)
+    price = models.FloatField()
+    currency = models.CharField(max_length=4)
+    period = models.CharField(max_length = 15,default="month")
+    color_code = models.CharField(max_length=20)
+    email_suppport = models.CharField(max_length=50)
+    storage_suppport = models.CharField(max_length=50)
+    website_suppport = models.CharField(max_length=50)
+    bandwidth_suppport = models.CharField(max_length=50)
+    customer_suppport = models.CharField(max_length=50)
+
+    class Meta:
+        db_table = 'vg_subscription_plan'
