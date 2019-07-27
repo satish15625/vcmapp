@@ -19,11 +19,17 @@
 		<div class="contact-grids">
 			<div class=" col-md-5 contact-form">
 			<h4 class="heading">Get In Touch</h4>
-				<form action="#" method="post">
-						<input type="text" placeholder="Full Name" required=""/>
-						<input type="email" placeholder="Your Mail" required=""/>
-						<input type="text" placeholder="Mobile Number" required=""/>
-						<textarea placeholder="Message" required=""></textarea>
+				<form action="{% url 'home:contact' %}" method="post">
+						{% csrf_token %}
+						<input type="text" name="name" placeholder="Full Name" required=""/>
+						{{ form.name.errors }}
+
+						<input type="email" name="email" placeholder="Your Mail" required=""/>
+						{{ form.email.errors }}
+						<input type="text" name="number" placeholder="Mobile Number" required=""/>
+						{{ form.number.errors }}
+						<textarea name="message" placeholder="Message" required=""></textarea>
+
 						<div class="submit1">
 							<input type="submit" value="sent">
 						</div>

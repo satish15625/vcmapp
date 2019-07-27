@@ -146,12 +146,12 @@
 				<div class="col-md-3 ser_grid1">
 						<img src="{{ val.service_image.url}}" alt="service1" style="width:100%;height:13em;"/>
 						<div class="ser_info">
-							<i class="fa icon fa-{{val.service_icon}}"></i>
+							<i class="fa icon {{val.service_icon}}"></i>
 							<h4> {{ val.service_name }}</h4>
 							<i class="fa fa-plus"></i>
 							<div class="clearfix"></div>
 						</div>
-						<p>{{val.service_desc}}</p>
+						<p>{{val.service_desc|safe|truncatewords:"10"|linebreaks}}</p>
 					</div>
 
 				{% endfor %}
