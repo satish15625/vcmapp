@@ -5,7 +5,7 @@ view file for handling rendering action
 
 
 from django.shortcuts import render, redirect
-from .models import Banner, ProfessionTeam, ServicesOffered, HappyClients,AboutUs,SubscriptionPlans
+from .models import Banner, ProfessionTeam, ServicesOffered, HappyClients, AboutUs, SubscriptionPlans
 from .forms import ConsultingForm
 from django.contrib import messages
 
@@ -19,7 +19,8 @@ def index(request):
     professional = ProfessionTeam.objects.all()
     professional1 = ProfessionTeam.objects.all()
 
-    services = ServicesOffered.objects.all()
+    # get recent four records for showing services
+    services = ServicesOffered.objects.all().order_by('-id')[:4]
 
     happyclients = HappyClients.objects.all()
 
@@ -35,7 +36,8 @@ def index(request):
 
             consultingInput.save()
 
-            messages.add_message(request, messages.SUCCESS, 'Thanks! your response submitted successfully. Our support team will connect with you in 24 Hrs.')
+            messages.add_message(
+                request, messages.SUCCESS, 'Thanks! your response submitted successfully. Our support team will connect with you in 24 Hrs.')
 
             redirect('/')
 
@@ -47,16 +49,36 @@ def index(request):
 
 def about(request):
     aboutsContent = AboutUs.objects.all().first()
-    plans         = SubscriptionPlans.objects.all()
-    return render(request, 'login/about.html',{'about' : aboutsContent,'plans' : plans})
+    plans = SubscriptionPlans.objects.all()
+    return render(request, 'login/about.html', {'about': aboutsContent, 'plans': plans})
 
 
 def services(request):
-    return render(request, 'login/services.html')
+    services = ServicesOffered.objects.all()
+    return render(request, 'login/services.html', {"services": services})
 
 
 def contact(request):
-    return render(request, 'login/contact.html')
+
+    consultingInput = ConsultingForm(None)
+
+    if(request.method == 'POST'):
+        print(request.POST)
+        consultingInput = ConsultingForm(request.POST)
+
+        if consultingInput.is_valid():
+
+            consultingInput.save()
+
+            messages.add_message(
+                request, messages.SUCCESS, 'Thanks! your response submitted successfully. Our support team will connect with you in 24 Hrs.')
+
+            redirect('/contact')
+
+        else:
+            return render(request, "login/contact.html", {'form': consultingInput})
+
+    return render(request, 'login/contact.html', {'form': consultingInput})
 
 
 def gallery(request):

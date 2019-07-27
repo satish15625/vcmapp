@@ -4242,3 +4242,6 @@ li.success {
     font-size: x-large;
     font-weight: 700;
 }
+ul.errorlist {
+    color: red;
+}

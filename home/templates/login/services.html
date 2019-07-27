@@ -15,47 +15,22 @@
 	<div class="container">
 		<h3 class="heading">Professional Services</h3>
 			<div class="service_grids">
+
+				{% if services %}
+				{% for val in services %}
 				<div class="col-md-3 service_grid1">
-					<img src="{% static 'images/serv1.jpg' %}" alt="service1" />
+					<img src="{{ val.service_image.url }}" alt="service1" />
 				</div>
 				<div class="col-md-3 service_grid2">
-					<h3>Business Strategy</h3>
-					<p>Nulla facilisi. Proin vel commodo leo. Ut mauris tortor, cursus ut massa vitae, iaculis vehicula turpis. Nam libero tempor.</p>
+					<h3>{{val.service_name}}</h3>
+					<p>{{val.service_desc|safe|truncatewords:"30"|linebreaks}}</p>
 					<div class="read">
-						<a href="#" data-toggle="modal" data-target="#myModal">Read more »</a>
+						<a href="#" data-desc="{{val.service_desc}}" data-toggle="modal" data-target="#myModal">Read more »</a>
 					</div>
 				</div>
-				<div class="col-md-3 service_grid1">
-					<img src="{% static 'images/serv3.jpg' %}" alt="service2" />
-				</div>
-				<div class="col-md-3 service_grid2">
-					<h3>Financial Solutions</h3>
-					<p>Nulla facilisi. Proin vel commodo leo. Ut mauris tortor, cursus ut massa vitae, iaculis vehicula turpis. Nam libero tempor.</p>
-					<div class="read">
-						<a href="#" data-toggle="modal" data-target="#myModal">Read more »</a>
-					</div>
-				</div>
-				<div class="clearfix"></div>
-				<div class="col-md-3 service_grid2">
-					<h3>Business Solutions</h3>
-					<p>Nulla facilisi. Proin vel commodo leo. Ut mauris tortor, cursus ut massa vitae, iaculis vehicula turpis. Nam libero tempor.</p>
-					<div class="read">
-						<a href="#" data-toggle="modal" data-target="#myModal">Read more »</a>
-					</div>
-				</div>
-				<div class="col-md-3 service_grid1">
-					<img src="{% static 'images/serv2.jpg' %}" alt="service1" />
-				</div>
-				<div class="col-md-3 service_grid2">
-					<h3>24/7 Support</h3>
-					<p>Nulla facilisi. Proin vel commodo leo. Ut mauris tortor, cursus ut massa vitae, iaculis vehicula turpis. Nam libero tempor.</p>
-					<div class="read">
-						<a href="#" data-toggle="modal" data-target="#myModal">Read more »</a>
-					</div>
-				</div>
-				<div class="col-md-3 service_grid1">
-					<img src="{% static 'images/serv4.jpg' %}" alt="service2" />
-				</div>
+				{% endfor %}
+				{% endif %}
+
 				<div class="clearfix"></div>
 			</div>
 	</div>
