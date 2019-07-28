@@ -44,7 +44,7 @@ def index(request):
             redirect('/')
 
         else:
-            return render(request, "login/index.html", {'form': consultingInput, 'banner': banner, 'professional': professional, 'services': services, 'happyclient': happyclients})
+            return render(request, "login/index.html", {'form': consultingInput, 'banner': banner, 'professional': professional, 'services': services, 'happyclient': happyclients,'contact':contact})
 
     return render(request, 'login/index.html', {'form': consultingInput, 'banner': banner, 'professional': professional, 'services': services, 'happyclient': happyclients,'contact':contact})
 
@@ -52,17 +52,21 @@ def index(request):
 def about(request):
     aboutsContent = AboutUs.objects.all().first()
     plans = SubscriptionPlans.objects.all()
-    return render(request, 'login/about.html', {'about': aboutsContent, 'plans': plans})
+    contact = ContactHeader.objects.all()
+    return render(request, 'login/about.html', {'about': aboutsContent, 'plans': plans,'contact' :contact})
 
 
 def services(request):
     services = ServicesOffered.objects.all()
-    return render(request, 'login/services.html', {"services": services})
+    contact = ContactHeader.objects.all()
+    return render(request, 'login/services.html', {"services": services,'contact' : contact})
 
 
 def contact(request):
 
     consultingInput = ConsultingForm(None)
+
+    contact = ContactHeader.objects.all()
 
     if(request.method == 'POST'):
         print(request.POST)
@@ -78,9 +82,9 @@ def contact(request):
             redirect('/contact')
 
         else:
-            return render(request, "login/contact.html", {'form': consultingInput})
+            return render(request, "login/contact.html", {'form': consultingInput,'contact':contact})
 
-    return render(request, 'login/contact.html', {'form': consultingInput})
+    return render(request, 'login/contact.html', {'form': consultingInput,'contact':contact})
 
 
 def gallery(request):

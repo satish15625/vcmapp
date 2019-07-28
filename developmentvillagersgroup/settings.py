@@ -74,7 +74,7 @@ WSGI_APPLICATION = 'developmentvillagersgroup.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-'''DATABASES = {
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME':'villagersgroup_db',
@@ -83,19 +83,19 @@ WSGI_APPLICATION = 'developmentvillagersgroup.wsgi.application'
         'HOST':'127.0.0.1',
         'PORT':''
     }
-}'''
-
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME':'vcm_db',
-        'USER':'postgres',
-        'PASSWORD':'admin',
-        'HOST':'localhost',
-        'PORT':5433
-    }
 }
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME':'vcm_db',
+#         'USER':'postgres',
+#         'PASSWORD':'admin',
+#         'HOST':'localhost',
+#         'PORT':5433
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
