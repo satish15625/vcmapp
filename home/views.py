@@ -3,9 +3,8 @@ view file for handling rendering action
 
 """
 
-
 from django.shortcuts import render, redirect
-from .models import Banner, ProfessionTeam, ServicesOffered, HappyClients, AboutUs, SubscriptionPlans,ContactHeader
+from .models import Banner, ProfessionTeam, ServicesOffered, HappyClients, AboutUs, SubscriptionPlans,ContactHeader,GalleryContent
 from .forms import ConsultingForm
 from django.contrib import messages
 
@@ -88,4 +87,17 @@ def contact(request):
 
 
 def gallery(request):
-    return render(request, 'login/gallery.html')
+
+    """
+    view class for handling gellery section results based on the cateogory specified
+    """
+    if (request.GET.get('cat') is None) or (request.GET.get('cat') == '0') :
+        category = '0'
+        gallery = GalleryContent.objects.all()
+    else:
+        category = request.GET['cat']
+        gallery = GalleryContent.objects.filter(image_category=category)
+    
+    recentImage = GalleryContent.objects.all().order_by('-id')[:8] 
+
+    return render(request, 'login/gallery.html',{'gallery':gallery,'category':category,'recent':recentImage})
