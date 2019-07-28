@@ -154,75 +154,75 @@
     <!-- //newsletter-->
     
     <!-- footer -->
-<div class="footer_top_agileits">
-	<div class="container-fluid">
-		<div class="col-md-3 footer_grid">
-			<h3>About Us</h3>
-			<p>Sagittis quis turpis vel, facilisis posuere erat. Nulla facilisi. Proin vel commodo leo. Ut mauris tortor, cursus ut massa vitae, iaculis vehicula turpis. Nam libero tempore cum vulputate id posuere erat.</p>
-			<div class="read">
-				
-				<a href="#" data-toggle="modal" data-target="#myModal">Read more »</a>
-			</div>
-		</div>
-		<div class="col-md-3 footer_grid">
-			<h3>Latest News</h3>
-			<ul class="footer_grid_list">
-				<li><i class="fa fa-chevron-right" aria-hidden="true"></i>
-					<a href="#" data-toggle="modal" data-target="#myModal">Lorem ipsum neque vulputate </a>
-				</li>
-				<li><i class="fa fa-chevron-right" aria-hidden="true"></i>
-					<a href="#" data-toggle="modal" data-target="#myModal">Dolor amet sed quam vitae</a>
-				</li>
-				<li><i class="fa fa-chevron-right" aria-hidden="true"></i>
-					<a href="#" data-toggle="modal" data-target="#myModal">Lorem ipsum neque, vulputate </a>
-				</li>
-				<li><i class="fa fa-chevron-right" aria-hidden="true"></i>
-					<a href="#" data-toggle="modal" data-target="#myModal">Dolor amet sed quam vitae</a>
-				</li>
-				<li><i class="fa fa-chevron-right" aria-hidden="true"></i>
-					<a href="#" data-toggle="modal" data-target="#myModal">Lorem ipsum neque, vulputate </a>
-				</li>
-			</ul>
-		</div>
-		<div class="col-md-3 footer_grid">
-			<h3>Contact Info</h3>
-			 {% if contact %}
-		   {% for co in contact %}
-			<ul class="address">
-				<li><i class="fa fa-map-marker" aria-hidden="true"></i>{{co.address}}</li>
-				<li><i class="fa fa-phone" aria-hidden="true"></i>{{co.country_code}}{{co.phone_number}}</li>
-				{% for co in contact%}
-				<li><i class="fa fa-globe" aria-hidden="true"></i><a href="{{co.contact_email}}">{{co.contact_email}}</a></li>
-				{% endfor %}
-			</ul>
-				{% endfor %}
-			{% endif %}
-		</div>
-		<div class="col-md-3 footer-grid_agileits_w3 footer_grid">
-				<h3>Recent Works</h3>
-				
-			<div class="footer-list">
-			     {% for val in services %}
-				<div class="flickr-grid">
-					<a href="#"><img src="{{ val.service_image.url}}" alt="{{val.service_name}}" ></a>
-				</div>
-					{% endfor %}
-				
-				<div class="clearfix"></div>
-			</div>
-		</div>
-		<div class="clearfix"> </div>
-	</div>
-</div>
-
-<div class="footer_w3ls">
-	<div class="container">
-		<div class="footer_bottom1">
-			<p>© 2018 Corporation. All rights reserved | Design by <a href="#">VCM</a></p>
-		</div>
-	</div>
-</div>
-<!-- //footer -->
+    <div class="footer_top_agileits">
+        <div class="container-fluid">
+            <div class="col-md-3 footer_grid">
+                <h3>About Us</h3>
+                <p>Sagittis quis turpis vel, facilisis posuere erat. Nulla facilisi. Proin vel commodo leo. Ut mauris tortor, cursus ut massa vitae, iaculis vehicula turpis. Nam libero tempore cum vulputate id posuere erat.</p>
+                <div class="read">
+                    <a href="about.html">Read more »</a>
+                </div>
+            </div>
+            <div class="col-md-3 footer_grid">
+                <h3>Latest News</h3>
+                <ul class="footer_grid_list">
+                    <li><i class="fa fa-chevron-right" aria-hidden="true"></i>
+                        <a href="#" data-toggle="modal" data-target="#myModal">Lorem ipsum neque vulputate </a>
+                    </li>
+                    <li><i class="fa fa-chevron-right" aria-hidden="true"></i>
+                        <a href="#" data-toggle="modal" data-target="#myModal">Dolor amet sed quam vitae</a>
+                    </li>
+                    <li><i class="fa fa-chevron-right" aria-hidden="true"></i>
+                        <a href="#" data-toggle="modal" data-target="#myModal">Lorem ipsum neque, vulputate </a>
+                    </li>
+                    <li><i class="fa fa-chevron-right" aria-hidden="true"></i>
+                        <a href="#" data-toggle="modal" data-target="#myModal">Dolor amet sed quam vitae</a>
+                    </li>
+                    <li><i class="fa fa-chevron-right" aria-hidden="true"></i>
+                        <a href="#" data-toggle="modal" data-target="#myModal">Lorem ipsum neque, vulputate </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-3 footer_grid">
+                <h3>Contact Info</h3>
+                 {% if contact %}
+               {% for co in contact %}
+                <ul class="address">
+                    <li><i class="fa fa-map-marker" aria-hidden="true"></i>{{co.address}}</li>
+                    <li><i class="fa fa-phone" aria-hidden="true"></i>{{co.country_code}} {{co.phone_number}}</li>
+                    <li><i class="fa fa-globe" aria-hidden="true"></i><a href="{{co.contact_email}}">{{co.contact_email}}</a></li>
+                </ul>
+                {% endfor %}
+                {% endif %}
+            </div>
+            <div class="col-md-3 footer-grid_agileits_w3 footer_grid">
+                <h3>Recent Works</h3>
+            <div class="footer-list">
+    
+                {% if recent %}
+                    {% for val in recent %}
+    
+                    <div class="flickr-grid">
+                            <a href="{{val.image.url}}"><img src="{{val.image.url}}" alt="{{val.alt_text}}" ></a>
+                        </div>
+    
+                    {% endfor %}
+                {% endif %}
+                
+                <div class="clearfix"></div>
+            </div>
+        </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+    <div class="footer_w3ls">
+        <div class="container">
+            <div class="footer_bottom1">
+                <p>© 2018 Corporation. All rights reserved | Design by <a href="https://villagersgroup.com">Villagersgroup</a></p>
+            </div>
+        </div>
+    </div>
+    <!-- //footer -->
     
     
     <!-- signin Model -->

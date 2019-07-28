@@ -140,4 +140,21 @@ class SubscriptionPlans(models.Model):
 
     class Meta:
         db_table = 'vg_subscription_plan'
+    
+class GalleryContent(models.Model):
+    """
+    model content file management 
+
+    """
+    CATEGORY = (
+        (0,'ALL'),
+        (1,'Finance'),
+        (2,'Business'),
+        (3,'Strategy'),
+        (4,'Development')
+    )
+    image = models.ImageField(upload_to = "media")
+    alt_text = models.CharField(max_length = 20)
+    image_category = models.SmallIntegerField(choices=CATEGORY)
+    
 

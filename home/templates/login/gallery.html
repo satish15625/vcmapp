@@ -7,210 +7,49 @@
     <div class="container">
 
         <h3 class="heading">Portfolio</h3>
+       
         <ul class="portfolio-categ filter">
-            <li class="port-filter all active">
-                <a href="#">All</a>
+            <li class="port-filter all {% if category == '0' %} active {% endif %}">
+                <a href="/gallery?cat=0">All</a>
             </li>
-            <li class="cat-item-1">
-                <a href="#" title="Finance">Finance</a>
+            <li class="cat-item-1 {% if category == '1' %} active {% endif %}" >
+                <a href="/gallery?cat=1" title="Finance">Finance</a>
             </li>
-            <li class="cat-item-2">
-                <a href="#" title="Business">Business</a>
+            <li class="cat-item-2 {% if category == '2' %} active {% endif %}">
+                <a href="/gallery?cat=2" title="Business">Business</a>
             </li>
-            <li class="cat-item-3">
-                <a href="#" title="Strategy">Strategy</a>
+            <li class="cat-item-3 {% if category == '3' %} active {% endif %}">
+                <a href="/gallery?cat=3" title="Strategy">Strategy</a>
             </li>
-            <li class="cat-item-4">
-                <a href="#" title="Development">Development</a>
+            <li class="cat-item-4 {% if category == '4' %} active {% endif %}">
+                <a href="/gallery?cat=4" title="Development">Development</a>
             </li>
         </ul>
+       
 
 
         <ul class="portfolio-area">
+            {% if gallery %}
+                {% for val in gallery %}
 
-            <li class="portfolio-item2" data-id="id-0" data-type="cat-item-4">
-                <div>
-                    <span class="image-block img-hover">
-                        <a class="image-zoom" href="{% static 'images/g1.jpg' %}" rel="prettyPhoto[gallery]">
-                            <figure>
-                                <img src="{% static 'images/g1.jpg' %}" class="img-responsive w3layouts agileits" alt="Corporation">
-                                <figcaption>
-                                    <h3>Corporation</h3>
-                                </figcaption>
-                            </figure>
-                        </a>
-                    </span>
-                </div>
-            </li>
+                <li class="portfolio-item2" data-id="id-{{val.id}}" data-type="cat-item-{{val.image_category}}">
+                        <div>
+                            <span class="image-block img-hover">
+                                <a class="image-zoom" href="{{val.image.url}}" rel="prettyPhoto[gallery]">
+                                    <figure>
+                                        <img src="{{val.image.url}}" alt="{{val.alt_text}}" class="img-responsive w3layouts agileits">
+                                        <figcaption>
+                                            <h3>{{val.alt_text}}</h3>
+                                        </figcaption>
+                                    </figure>
+                                </a>
+                            </span>
+                        </div>
+                    </li>
 
+                {% endfor %}
+            {% endif %}
 
-            <li class="portfolio-item2" data-id="id-1" data-type="cat-item-2">
-                <div>
-                    <span class="image-block">
-                        <a class="image-zoom" href="{% static 'images/g2.jpg' %}" rel="prettyPhoto[gallery]">
-                            <figure>
-                                <img src="{% static 'images/g2.jpg' %}" class="img-responsive w3layouts agileits" alt="Corporation">
-                                <figcaption>
-                                    <h3>Corporation</h3>
-                                </figcaption>
-                            </figure>
-                        </a>
-                    </span>
-                </div>
-            </li>
-
-
-            <li class="portfolio-item2" data-id="id-2" data-type="cat-item-1">
-                <div>
-                    <span class="image-block">
-                        <a class="image-zoom" href="{% static 'images/g3.jpg' %}" rel="prettyPhoto[gallery]">
-                            <figure>
-                                <img src="{% static 'images/g3.jpg' %}" class="img-responsive w3layouts agileits" alt="Corporation">
-                                <figcaption>
-                                    <h3>Corporation</h3>
-                                </figcaption>
-                            </figure>
-                        </a>
-                    </span>
-                </div>
-            </li>
-
-
-            <li class="portfolio-item2" data-id="id-3" data-type="cat-item-4">
-                <div>
-                    <span class="image-block">
-                        <a class="image-zoom" href="{% static 'images/g4.jpg' %}" rel="prettyPhoto[gallery]">
-                            <figure>
-                                <img src="{% static 'images/g4.jpg' %}" class="img-responsive w3layouts agileits" alt="Corporation">
-                                <figcaption>
-                                    <h3>Corporation</h3>
-                                </figcaption>
-                            </figure>
-                        </a>
-                    </span>
-                </div>
-            </li>
-
-
-            <li class="portfolio-item2" data-id="id-4" data-type="cat-item-3">
-                <div>
-                    <span class="image-block">
-                        <a class="image-zoom" href="{% static 'images/g5.jpg' %}" rel="prettyPhoto[gallery]">
-                            <figure>
-                                <img src="{% static 'images/g5.jpg' %}" class="img-responsive w3layouts agileits" alt="Corporation">
-                                <figcaption>
-                                    <h3>Corporation</h3>
-                                </figcaption>
-                            </figure>
-                        </a>
-                    </span>
-                </div>
-            </li>
-
-
-            <li class="portfolio-item2" data-id="id-5" data-type="cat-item-3">
-                <div>
-                    <span class="image-block">
-                        <a class="image-zoom" href="{% static 'images/g6.jpg' %}" rel="prettyPhoto[gallery]">
-                            <figure>
-                                <img src="{% static 'images/g6.jpg' %}" class="img-responsive w3layouts agileits" alt="Corporation">
-                                <figcaption>
-                                    <h3>Corporation</h3>
-                                </figcaption>
-                            </figure>
-                        </a>
-                    </span>
-                </div>
-            </li>
-            <li class="portfolio-item2" data-id="id-5" data-type="cat-item-4">
-                <div>
-                    <span class="image-block">
-                        <a class="image-zoom" href="{% static 'images/g6.jpg' %}" rel="prettyPhoto[gallery]">
-                            <figure>
-                                <img src="{% static 'images/g6.jpg' %}" class="img-responsive w3layouts agileits" alt="Corporation">
-                                <figcaption>
-                                    <h3>Corporation</h3>
-                                </figcaption>
-                            </figure>
-                        </a>
-                    </span>
-                </div>
-            </li>
-
-
-            <li class="portfolio-item2" data-id="id-6" data-type="cat-item-1">
-                <div>
-                    <span class="image-block">
-                        <a class="image-zoom" href="{% static 'images/g7.jpg' %}" rel="prettyPhoto[gallery]">
-                            <figure>
-                                <img src="{% static 'images/g7.jpg' %}" class="img-responsive w3layouts agileits" alt="Corporation">
-                                <figcaption>
-                                    <h3>Corporation</h3>
-                                </figcaption>
-                            </figure>
-                        </a>
-                    </span>
-                </div>
-            </li>
-
-            <li class="portfolio-item2" data-id="id-9" data-type="cat-item-2">
-                <div>
-                    <span class="image-block">
-                        <a class="image-zoom" href="{% static 'images/g9.jpg' %}" rel="prettyPhoto[gallery]">
-                            <figure>
-                                <img src="{% static 'images/g9.jpg' %}" class="img-responsive w3layouts agileits" alt="Corporation">
-                                <figcaption>
-                                    <h3>Corporation</h3>
-                                </figcaption>
-                            </figure>
-                        </a>
-                    </span>
-                </div>
-            </li>
-
-            <li class="portfolio-item2" data-id="id-7" data-type="cat-item-1">
-                <div>
-                    <span class="image-block">
-                        <a class="image-zoom" href="{% static 'images/g8.jpg' %}" rel="prettyPhoto[gallery]">
-                            <figure>
-                                <img src="{% static 'images/g8.jpg' %}" class="img-responsive w3layouts agileits" alt="Corporation">
-                                <figcaption>
-                                    <h3>Corporation</h3>
-                                </figcaption>
-                            </figure>
-                        </a>
-                    </span>
-                </div>
-            </li>
-            <li class="portfolio-item2" data-id="id-9" data-type="cat-item-5">
-                <div>
-                    <span class="image-block">
-                        <a class="image-zoom" href="{% static 'images/g10.jpg' %}" rel="prettyPhoto[gallery]">
-                            <figure>
-                                <img src="{% static 'images/g10.jpg' %}" class="img-responsive w3layouts agileits" alt="Corporation">
-                                <figcaption>
-                                    <h3>Corporation</h3>
-                                </figcaption>
-                            </figure>
-                        </a>
-                    </span>
-                </div>
-            </li>
-
-            <li class="portfolio-item2" data-id="id-8" data-type="cat-item-1">
-                <div>
-                    <span class="image-block">
-                        <a class="image-zoom" href="{% static 'images/g2.jpg' %}" rel="prettyPhoto[gallery]">
-                            <figure>
-                                <img src="{% static 'images/g2.jpg' %}" class="img-responsive w3layouts agileits" alt="Corporation">
-                                <figcaption>
-                                    <h3>Corporation</h3>
-                                </figcaption>
-                            </figure>
-                        </a>
-                    </span>
-                </div>
-            </li>
             <div class="column-clear"></div>
         </ul>
         <!--end portfolio-area -->
@@ -237,64 +76,65 @@
 
 <!-- footer -->
 <div class="footer_top_agileits">
-	<div class="container-fluid">
-		<div class="col-md-3 footer_grid">
-			<h3>About Us</h3>
-			<p>Sagittis quis turpis vel, facilisis posuere erat. Nulla facilisi. Proin vel commodo leo. Ut mauris tortor, cursus ut massa vitae, iaculis vehicula turpis. Nam libero tempore cum vulputate id posuere erat.</p>
-			<div class="read">
-				
-				<a href="#" data-toggle="modal" data-target="#myModal">Read more »</a>
-			</div>
-		</div>
-		<div class="col-md-3 footer_grid">
-			<h3>Latest News</h3>
-			<ul class="footer_grid_list">
-				<li><i class="fa fa-chevron-right" aria-hidden="true"></i>
-					<a href="#" data-toggle="modal" data-target="#myModal">Lorem ipsum neque vulputate </a>
-				</li>
-				<li><i class="fa fa-chevron-right" aria-hidden="true"></i>
-					<a href="#" data-toggle="modal" data-target="#myModal">Dolor amet sed quam vitae</a>
-				</li>
-				<li><i class="fa fa-chevron-right" aria-hidden="true"></i>
-					<a href="#" data-toggle="modal" data-target="#myModal">Lorem ipsum neque, vulputate </a>
-				</li>
-				<li><i class="fa fa-chevron-right" aria-hidden="true"></i>
-					<a href="#" data-toggle="modal" data-target="#myModal">Dolor amet sed quam vitae</a>
-				</li>
-				<li><i class="fa fa-chevron-right" aria-hidden="true"></i>
-					<a href="#" data-toggle="modal" data-target="#myModal">Lorem ipsum neque, vulputate </a>
-				</li>
-			</ul>
-		</div>
-		<div class="col-md-3 footer_grid">
-			<h3>Contact Info</h3>
-			 {% if contact %}
-		   {% for co in contact %}
-			<ul class="address">
-				<li><i class="fa fa-map-marker" aria-hidden="true"></i>{{co.address}}</li>
-				<li><i class="fa fa-phone" aria-hidden="true"></i>{{co.country_code}}{{co.phone_number}}</li>
-				{% for co in contact%}
-				<li><i class="fa fa-globe" aria-hidden="true"></i><a href="{{co.contact_email}}">{{co.contact_email}}</a></li>
-				{% endfor %}
-			</ul>
-				{% endfor %}
-			{% endif %}
-		</div>
-		<div class="col-md-3 footer-grid_agileits_w3 footer_grid">
-				<h3>Recent Works</h3>
-				
-			<div class="footer-list">
-			     {% for val in services %}
-				<div class="flickr-grid">
-					<a href="#"><img src="{{ val.service_image.url}}" alt="{{val.service_name}}" ></a>
-				</div>
-					{% endfor %}
-				
-				<div class="clearfix"></div>
-			</div>
-		</div>
-		<div class="clearfix"> </div>
-	</div>
+<div class="container-fluid">
+    <div class="col-md-3 footer_grid">
+        <h3>About Us</h3>
+        <p>Sagittis quis turpis vel, facilisis posuere erat. Nulla facilisi. Proin vel commodo leo. Ut mauris tortor, cursus ut massa vitae, iaculis vehicula turpis. Nam libero tempore cum vulputate id posuere erat.</p>
+        <div class="read">
+            <a href="about.html">Read more »</a>
+        </div>
+    </div>
+    <div class="col-md-3 footer_grid">
+        <h3>Latest News</h3>
+        <ul class="footer_grid_list">
+            <li><i class="fa fa-chevron-right" aria-hidden="true"></i>
+                <a href="#" data-toggle="modal" data-target="#myModal">Lorem ipsum neque vulputate </a>
+            </li>
+            <li><i class="fa fa-chevron-right" aria-hidden="true"></i>
+                <a href="#" data-toggle="modal" data-target="#myModal">Dolor amet sed quam vitae</a>
+            </li>
+            <li><i class="fa fa-chevron-right" aria-hidden="true"></i>
+                <a href="#" data-toggle="modal" data-target="#myModal">Lorem ipsum neque, vulputate </a>
+            </li>
+            <li><i class="fa fa-chevron-right" aria-hidden="true"></i>
+                <a href="#" data-toggle="modal" data-target="#myModal">Dolor amet sed quam vitae</a>
+            </li>
+            <li><i class="fa fa-chevron-right" aria-hidden="true"></i>
+                <a href="#" data-toggle="modal" data-target="#myModal">Lorem ipsum neque, vulputate </a>
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-3 footer_grid">
+        <h3>Contact Info</h3>
+         {% if contact %}
+       {% for co in contact %}
+        <ul class="address">
+            <li><i class="fa fa-map-marker" aria-hidden="true"></i>{{co.address}}</li>
+            <li><i class="fa fa-phone" aria-hidden="true"></i>{{co.country_code}} {{co.phone_number}}</li>
+            <li><i class="fa fa-globe" aria-hidden="true"></i><a href="{{co.contact_email}}">{{co.contact_email}}</a></li>
+        </ul>
+        {% endfor %}
+        {% endif %}
+    </div>
+    <div class="col-md-3 footer-grid_agileits_w3 footer_grid">
+            <h3>Recent Works</h3>
+        <div class="footer-list">
+
+            {% if recent %}
+                {% for val in recent %}
+
+                <div class="flickr-grid">
+                        <a href="{{val.image.url}}"><img src="{{val.image.url}}" alt="{{val.alt_text}}" ></a>
+                    </div>
+
+                {% endfor %}
+            {% endif %}
+            
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <div class="clearfix"> </div>
+</div>
 </div>
 
 <div class="footer_w3ls">
