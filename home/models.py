@@ -66,12 +66,12 @@ class ContactHeader(models.Model):
     phone_number = models.BigIntegerField()
     country_code = models.CharField(max_length=6)
     contact_email = models.EmailField()
-    address = models.CharField(max_length=100)
+    address = models.CharField(max_length=100,null=True,blank=True)
     facebook_url = models.URLField()
     twitter_url = models.URLField()
     insta_url = models.URLField()
     linkedin_url = models.URLField()
-    google_map_url = models.CharField(max_length=500)
+    google_map_url = models.CharField(max_length=500,null=True,blank=True)
 
 
     class Meta:
