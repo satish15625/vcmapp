@@ -5,7 +5,7 @@ view file for handling rendering action
 
 
 from django.shortcuts import render, redirect
-from .models import Banner, ProfessionTeam, ServicesOffered, HappyClients, AboutUs, SubscriptionPlans,ContactHeader
+from .models import Banner, ProfessionTeam, ServicesOffered, HappyClients, AboutUs, SubscriptionPlans,ContactHeader,About_Details
 from .forms import ConsultingForm
 from django.contrib import messages
 
@@ -20,6 +20,7 @@ def index(request):
     professional1 = ProfessionTeam.objects.all()
 
     contact = ContactHeader.objects.all()
+    about_details = About_Details.objects.all()
 
     # get recent four records for showing services
     services = ServicesOffered.objects.all().order_by('-id')[:4]
@@ -46,14 +47,15 @@ def index(request):
         else:
             return render(request, "login/index.html", {'form': consultingInput, 'banner': banner, 'professional': professional, 'services': services, 'happyclient': happyclients,'contact':contact})
 
-    return render(request, 'login/index.html', {'form': consultingInput, 'banner': banner, 'professional': professional, 'services': services, 'happyclient': happyclients,'contact':contact})
+    return render(request, 'login/index.html', {'form': consultingInput, 'banner': banner, 'professional': professional, 'services': services, 'happyclient': happyclients,'contact':contact,'about_details':about_details})
 
 
 def about(request):
     aboutsContent = AboutUs.objects.all().first()
     plans = SubscriptionPlans.objects.all()
     contact = ContactHeader.objects.all()
-    return render(request, 'login/about.html', {'about': aboutsContent, 'plans': plans,'contact' :contact})
+    about_details = About_Details.objects.all()
+    return render(request, 'login/about.html', {'about': aboutsContent, 'plans': plans,'contact' :contact,'about_details':about_details})
 
 
 def services(request):
