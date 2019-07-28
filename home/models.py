@@ -47,10 +47,12 @@ class ContactHeader(models.Model):
     phone_number = models.BigIntegerField()
     country_code = models.CharField(max_length=6)
     contact_email = models.EmailField()
+   
     facebook_url = models.URLField()
     twitter_url = models.URLField()
     insta_url = models.URLField()
     linkedin_url = models.URLField()
+
 
     class Meta:
         db_table = 'vg_contact_header'
@@ -115,7 +117,7 @@ class SubscriptionPlans(models.Model):
     price = models.FloatField()
     currency = models.CharField(max_length=4)
     period = models.CharField(max_length = 15,default="month")
-    color_code = models.CharField(max_length=20)
+    color_code = models.CharField(max_length=20,default="#585858")
     email_suppport = models.CharField(max_length=50)
     storage_suppport = models.CharField(max_length=50)
     website_suppport = models.CharField(max_length=50)

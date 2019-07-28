@@ -5,7 +5,7 @@ view file for handling rendering action
 
 
 from django.shortcuts import render, redirect
-from .models import Banner, ProfessionTeam, ServicesOffered, HappyClients, AboutUs, SubscriptionPlans
+from .models import Banner, ProfessionTeam, ServicesOffered, HappyClients, AboutUs, SubscriptionPlans,ContactHeader
 from .forms import ConsultingForm
 from django.contrib import messages
 
@@ -18,6 +18,8 @@ def index(request):
 
     professional = ProfessionTeam.objects.all()
     professional1 = ProfessionTeam.objects.all()
+
+    contact = ContactHeader.objects.all()
 
     # get recent four records for showing services
     services = ServicesOffered.objects.all().order_by('-id')[:4]
@@ -44,7 +46,7 @@ def index(request):
         else:
             return render(request, "login/index.html", {'form': consultingInput, 'banner': banner, 'professional': professional, 'services': services, 'happyclient': happyclients})
 
-    return render(request, 'login/index.html', {'form': consultingInput, 'banner': banner, 'professional': professional, 'services': services, 'happyclient': happyclients})
+    return render(request, 'login/index.html', {'form': consultingInput, 'banner': banner, 'professional': professional, 'services': services, 'happyclient': happyclients,'contact':contact})
 
 
 def about(request):
