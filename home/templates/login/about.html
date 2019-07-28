@@ -202,43 +202,33 @@
             </div>
             <div class="col-md-3 footer_grid">
                 <h3>Contact Info</h3>
+                 {% if contact %}
+               {% for co in contact %}
                 <ul class="address">
-                    <li><i class="fa fa-map-marker" aria-hidden="true"></i>Ward 17 Village-Bhadi, Po-khutar, Distt-Singrauli-486886, <span> Madhya Pradesh-INDIA</span></li>
-                    <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="vcmltd@gmail.com">vcmltd@gmail.com</a></li>
-                    <li><i class="fa fa-phone" aria-hidden="true"></i>+91 9174 119 198</li>
-                    <li><i class="fa fa-globe" aria-hidden="true"></i><a href="#">vcmltd@gmail.com</a></li>
+                    <li><i class="fa fa-map-marker" aria-hidden="true"></i>{{co.address}}</li>
+                    <li><i class="fa fa-phone" aria-hidden="true"></i>{{co.country_code}} {{co.phone_number}}</li>
+                    <li><i class="fa fa-globe" aria-hidden="true"></i><a href="{{co.contact_email}}">{{co.contact_email}}</a></li>
                 </ul>
+                {% endfor %}
+                {% endif %}
             </div>
             <div class="col-md-3 footer-grid_agileits_w3 footer_grid">
-                    <h3>Recent Works</h3>
-                <div class="footer-list">
+                <h3>Recent Works</h3>
+            <div class="footer-list">
+    
+                {% if recent %}
+                    {% for val in recent %}
+    
                     <div class="flickr-grid">
-                        <a href="#"><img src="{% static 'images/p1.jpg' %}" alt=" " ></a>
-                    </div>
-                    <div class="flickr-grid">
-                        <a href="#"><img src="{% static 'images/p2.jpg' %}" alt=" "></a>
-                    </div>
-                    <div class="flickr-grid">
-                        <a href="#"><img src="{% static 'images/p3.jpg' %}" alt=" " ></a>
-                    </div>
-                    <div class="flickr-grid">
-                        <a href="#"><img src="{% static 'images/p4.jpg' %}" alt=" "></a>
-                    </div>
-                    <div class="flickr-grid">
-                        <a href="#"><img src="{% static 'images/p5.jpg' %}" alt=" "></a>
-                    </div>
-                    <div class="flickr-grid">
-                        <a href="#"><img src="{% static 'images/p6.jpg' %}" alt=" "></a>
-                    </div>
-                    <div class="flickr-grid">
-                        <a href="#"><img src="{% static 'images/p1.jpg' %}" alt=" "></a>
-                    </div>
-                    <div class="flickr-grid">
-                        <a href="#"><img src="{% static 'images/p2.jpg' %}" alt=" "></a>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
+                            <a href="{{val.image.url}}"><img src="{{val.image.url}}" alt="{{val.alt_text}}" ></a>
+                        </div>
+    
+                    {% endfor %}
+                {% endif %}
+                
+                <div class="clearfix"></div>
             </div>
+        </div>
             <div class="clearfix"> </div>
         </div>
     </div>

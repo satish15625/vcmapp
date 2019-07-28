@@ -106,12 +106,15 @@
     </div>
     <div class="col-md-3 footer_grid">
         <h3>Contact Info</h3>
+         {% if contact %}
+       {% for co in contact %}
         <ul class="address">
-            <li><i class="fa fa-map-marker" aria-hidden="true"></i>Ward 17 Village-Bhadi, Po-khutar, Distt-Singrauli-486886, <span> Madhya Pradesh-INDIA</span></li>
-            <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="vcmltd@gmail.com">vcmltd@gmail.com</a></li>
-            <li><i class="fa fa-phone" aria-hidden="true"></i>+91 9174 119 198</li>
-            <li><i class="fa fa-globe" aria-hidden="true"></i><a href="#">vcmltd@gmail.com</a></li>
+            <li><i class="fa fa-map-marker" aria-hidden="true"></i>{{co.address}}</li>
+            <li><i class="fa fa-phone" aria-hidden="true"></i>{{co.country_code}} {{co.phone_number}}</li>
+            <li><i class="fa fa-globe" aria-hidden="true"></i><a href="{{co.contact_email}}">{{co.contact_email}}</a></li>
         </ul>
+        {% endfor %}
+        {% endif %}
     </div>
     <div class="col-md-3 footer-grid_agileits_w3 footer_grid">
             <h3>Recent Works</h3>

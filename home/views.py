@@ -18,7 +18,9 @@ def index(request):
     professional = ProfessionTeam.objects.all()
     professional1 = ProfessionTeam.objects.all()
 
-    contact = ContactHeader.objects.all()
+    contact = ContactHeader.objects.all().order_by('-id')[:1]
+
+    recentImage = GalleryContent.objects.all().order_by('-id')[:8] 
 
     # get recent four records for showing services
     services = ServicesOffered.objects.all().order_by('-id')[:4]
@@ -43,29 +45,33 @@ def index(request):
             redirect('/')
 
         else:
-            return render(request, "login/index.html", {'form': consultingInput, 'banner': banner, 'professional': professional, 'services': services, 'happyclient': happyclients,'contact':contact})
+            return render(request, "login/index.html", {'form': consultingInput, 'banner': banner, 'professional': professional, 'services': services, 'happyclient': happyclients,'contact':contact,'recent' :recentImage})
 
-    return render(request, 'login/index.html', {'form': consultingInput, 'banner': banner, 'professional': professional, 'services': services, 'happyclient': happyclients,'contact':contact})
+    return render(request, 'login/index.html', {'form': consultingInput, 'banner': banner, 'professional': professional, 'services': services, 'happyclient': happyclients,'contact':contact,'recent' :recentImage})
 
 
 def about(request):
     aboutsContent = AboutUs.objects.all().first()
     plans = SubscriptionPlans.objects.all()
-    contact = ContactHeader.objects.all()
-    return render(request, 'login/about.html', {'about': aboutsContent, 'plans': plans,'contact' :contact})
+    contact = ContactHeader.objects.all().order_by('-id')[:1]
+    recentImage = GalleryContent.objects.all().order_by('-id')[:8] 
+    return render(request, 'login/about.html', {'about': aboutsContent, 'plans': plans,'contact' :contact,'recent':recentImage})
 
 
 def services(request):
     services = ServicesOffered.objects.all()
-    contact = ContactHeader.objects.all()
-    return render(request, 'login/services.html', {"services": services,'contact' : contact})
+    contact = ContactHeader.objects.all().order_by('-id')[:1]
+    recentImage = GalleryContent.objects.all().order_by('-id')[:8] 
+    return render(request, 'login/services.html', {"services": services,'contact' : contact,'recent':recentImage})
 
 
 def contact(request):
 
     consultingInput = ConsultingForm(None)
 
-    contact = ContactHeader.objects.all()
+    contact = ContactHeader.objects.all().order_by('-id')[:1]
+
+    recentImage = GalleryContent.objects.all().order_by('-id')[:8] 
 
     if(request.method == 'POST'):
         print(request.POST)
@@ -81,9 +87,9 @@ def contact(request):
             redirect('/contact')
 
         else:
-            return render(request, "login/contact.html", {'form': consultingInput,'contact':contact})
+            return render(request, "login/contact.html", {'form': consultingInput,'contact':contact,'recent':recentImage})
 
-    return render(request, 'login/contact.html', {'form': consultingInput,'contact':contact})
+    return render(request, 'login/contact.html', {'form': consultingInput,'contact':contact,'recent':recentImage})
 
 
 def gallery(request):
@@ -100,4 +106,6 @@ def gallery(request):
     
     recentImage = GalleryContent.objects.all().order_by('-id')[:8] 
 
-    return render(request, 'login/gallery.html',{'gallery':gallery,'category':category,'recent':recentImage})
+    contact = ContactHeader.objects.all().order_by('-id')[:1]
+
+    return render(request, 'login/gallery.html',{'gallery':gallery,'category':category,'recent':recentImage,'contact':contact})
