@@ -151,6 +151,13 @@
 				items: 1,
 				navigation: true,
 			});
+
+			$("#professional_team").owlCarousel({
+				autoPlay: 500, //Set AutoPlay to 3 seconds
+				autoPlay: true,
+				items: 2,
+				navigation: true,
+			});
 			
 		}); 
 	</script>
@@ -184,6 +191,8 @@
 		$(window).load(function(){
 		  $('.flexslider').flexslider({
 			animation: "slide",
+			minItems: 2,
+			maxItems: 4,
 			start: function(slider){
 			  $('body').removeClass('loading');
 			}
