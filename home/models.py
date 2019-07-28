@@ -47,7 +47,9 @@ class ContactHeader(models.Model):
     phone_number = models.BigIntegerField()
     country_code = models.CharField(max_length=6)
     contact_email = models.EmailField()
-   
+    address       = models.TextField(null=True,blank=True)
+    alt_contact_email = models.EmailField(null=True,blank=True)
+    alt_phone_number  = models.BigIntegerField(null=True,blank=True)
     facebook_url = models.URLField()
     twitter_url = models.URLField()
     insta_url = models.URLField()
