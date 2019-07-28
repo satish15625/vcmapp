@@ -5,13 +5,22 @@
 {% load static %}
 
 
+
+<!-- banner -->
+<div class="banner"  style= "background: url({% static 'images/banner1.jpg' %}) 0px 0px no-repeat;">
+	<h2>About</h2>
+	<p><a href="/">Home »</a> About </p>
+</div>
+<!--//banner -->
+
+
 <!-- welcome about details -->
 <div class="welcome">
 	<div class="container">
 		<h3 class="heading">About</h3>
 		
 			{% for ab in about_details %}
-		<div class="col-md-6 welcome_left" style=" background: url({{ ab.about_image.url }}) no-repeat 0px 0px;">
+		<div class="col-md-6 welcome_left" style=" background: url({{ab.about_image.url }}) no-repeat 0px 0px;">
 			<div class="layer1">
 				<div class="welcome_left_info">
 				<h3>{{ab.about_title_name}}</h3>
@@ -157,12 +166,15 @@
     <div class="footer_top_agileits">
         <div class="container-fluid">
             <div class="col-md-3 footer_grid">
-                <h3>About Us</h3>
-                <p>Sagittis quis turpis vel, facilisis posuere erat. Nulla facilisi. Proin vel commodo leo. Ut mauris tortor, cursus ut massa vitae, iaculis vehicula turpis. Nam libero tempore cum vulputate id posuere erat.</p>
-                <div class="read">
-                    <a href="about.html">Read more »</a>
-                </div>
-            </div>
+			<h3>About Us</h3>
+			{% for ab in about_details %}
+			<p>{{ab.about_desc}}</p>
+			{% endfor%}
+			<div class="read">
+				
+				<a href="/about" >Read more »</a>
+			</div>
+		</div>
             <div class="col-md-3 footer_grid">
                 <h3>Latest News</h3>
                 <ul class="footer_grid_list">
