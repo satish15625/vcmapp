@@ -136,7 +136,7 @@ EMAIL_USE_TLS = True
 
 EMAIL_HOST = 'mail.villagersgroup.com'
 
-EMAIL_PORT = 26
+EMAIL_PORT = 465
 
 EMAIL_HOST_USER = 'contact@villagersgroup.com'
 
