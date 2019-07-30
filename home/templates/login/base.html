@@ -61,7 +61,7 @@
 					<ul>
 						<li id="google_translate_element"></li>
 						<li><i class="fa fa-phone" aria-hidden="true"></i>{{co.country_code}}{{co.phone_number}} </li>
-						<li><i class="fa fa-envelope-o" aria-hidden="true"></i> <a href="{{co.contact_email}}">{{co.contact_email}}</a></li>
+						<li><i class="fa fa-envelope-o" aria-hidden="true"></i> <a href="mailto:{{co.contact_email}}">{{co.contact_email}}</a></li>
 	
 					</ul>
 				</div>
@@ -227,6 +227,59 @@
 			});
 
 		});
+
+
+		var SUBMIT_NEWSLETTER_SUBSCRIPTION = {
+
+			ajax_submit_new_letter_subscription : function(ele,email,type) {
+			   
+			   $.ajax({
+				   url: '/send-email',
+				   data: {
+					 'type': type,
+					 'email' : email
+				   },
+				   dataType: 'json',
+				   beforeSend : function() {
+								   $("#submit_button_error").removeClass('error');
+								   $("#submit_button_error").html("");
+								   ele.attr('disabled','disabled');
+								   ele.html('<i class="fa fa-spinner"></i>');
+								  
+				   },
+				   success: function (data) {
+					   
+							   if(parseInt(data.code) == 200 ) {
+								   alert(data.message)
+							   } else {
+								   $("#submit_button_error").addClass('error');
+								   $("#submit_button_error").html(data.message)
+							   }
+						   },
+						   
+
+					complete : function() {
+						ele.html('submit');
+						ele.attr('disabled',false);
+						$("#submit_news_letter_email").val('');
+
+					}	
+				 });
+		   
+
+
+			}
+		}
+
+		$('body').on('click','#submit_button_news_leeter',function(){
+			var type = "subscription";
+			var email = $("#submit_news_letter_email").val();
+			var ele  = $(this);
+			SUBMIT_NEWSLETTER_SUBSCRIPTION.ajax_submit_new_letter_subscription(ele,email,type);
+		});
+  
+
+
 	</script>
 	<!-- //smooth-scrolling-of-move-up -->
 	
