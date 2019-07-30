@@ -7,6 +7,8 @@ from django.shortcuts import render, redirect
 from .models import Banner, ProfessionTeam, ServicesOffered, HappyClients, AboutUs, SubscriptionPlans,ContactHeader,GalleryContent,About_Details,OurStatistics,Logo
 from .forms import ConsultingForm
 from django.contrib import messages
+from django.core.mail import EmailMessage
+from django.http import JsonResponse
 
 
 def index(request):
@@ -116,3 +118,12 @@ def gallery(request):
     about_details= About_Details.objects.all().order_by('-id')[:1]
 
     return render(request, 'login/gallery.html',{'gallery':gallery,'category':category,'recent':recentImage,'contact':contact,'about_details':about_details,'logo':logo})
+
+def sendUserEmail(request):
+    try:
+        email = EmailMessage('Subject', 'Body', to=['jatin@yopmail.com'])
+        email.send()
+    except Exception as error:
+        response = {'code':422,'message':str(error)}
+  
+    return JsonResponse({'code' : 200,'message' : 'Email send successfully'})

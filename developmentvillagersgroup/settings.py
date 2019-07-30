@@ -132,6 +132,27 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 MEDIA_URL = '/media/'
 
+# EMAIL_USE_TLS = True
+
+# EMAIL_HOST = 'mail.villagersgroup.com'
+
+# EMAIL_PORT = 26
+
+# EMAIL_HOST_USER = 'contact@villagersgroup.com'
+
+# EMAIL_HOST_PASSWORD = 'contact@12345'
+
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_HOST = 'mail.villagersgroup.com'
+EMAIL_HOST_USER = 'contact@villagersgroup.com'
+EMAIL_HOST_PASSWORD = 'contact@12345'
+DEFAULT_FROM_EMAIL = 'contact@villagersgroup.com'
+SERVER_EMAIL = 'contact@villagersgroup.com'
+EMAIL_PORT = 26
+EMAIL_USE_TLS = False
+
+
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static")
 ]
