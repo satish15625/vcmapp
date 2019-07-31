@@ -138,7 +138,7 @@ EMAIL_HOST = 'mail.villagersgroup.com'
 
 EMAIL_PORT = 465
 
-EMAIL_HOST_USER = 'contact@villagersgroup.com'
+EMAIL_HOST_USER = 'contact'
 
 DEFAULT_FROM_EMAIL = 'contact@villagersgroup.com'
 
