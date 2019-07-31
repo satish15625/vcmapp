@@ -134,7 +134,7 @@ MEDIA_URL = '/media/'
 
 EMAIL_USE_TLS = True
 
-EMAIL_HOST = 'localhost'
+EMAIL_HOST = 'mail.villagersgroup.com'
 
 EMAIL_PORT = 26
 
