@@ -134,11 +134,11 @@ MEDIA_URL = '/media/'
 
 EMAIL_USE_TLS = True
 
-EMAIL_HOST = 'mail.villagersgroup.com'
+EMAIL_HOST = 'localhost'
 
-EMAIL_PORT = 465
+EMAIL_PORT = 26
 
-EMAIL_HOST_USER = 'contact'
+EMAIL_HOST_USER = 'contact@villagersgroup.com'
 
 DEFAULT_FROM_EMAIL = 'contact@villagersgroup.com'
 
