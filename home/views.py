@@ -202,20 +202,24 @@ def UserLogin(request):
 
             # store new registered user into the db.
             username = email + str(uuid4())
-            password = hashlib.sha256(str(random.getrandbits(256)).encode('utf-8')).hexdigest()
-            UserObject = User.objects.get_or_create(
+            UserObject = User.objects.create_user(
                 email=email.lower(), password=password, username=username)
 
             # store profile information
             company_name = request.POST['username']
             phone_number = request.POST['phone']
-
-            Profile.objects.get_or_create(
-                user=UserObject, company_name=company_name, phone_number=phone_number)
-
+            Profile.objects.create(
+                user=UserObject,company_name=company_name, phone_number=phone_number)
+       
         user = authenticate(username=username, password=password)
-        login(request, user)
-        return redirect('/dashboard')
+
+        if user is not None:
+            login(request, user)
+            return redirect('/dashboard')
+        else:
+            messages.add_message(
+                request, messages.WARNING, 'Your account credentials are not valid')
+
 
 
 @login_required(login_url='/')
