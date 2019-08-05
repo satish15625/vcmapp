@@ -202,7 +202,7 @@ def UserLogin(request):
 
             # store new registered user into the db.
             username = email + str(uuid4())
-            password = hashlib.md5(password).hexdigest()
+            password = hashlib.sha256(str(random.getrandbits(256)).encode('utf-8')).hexdigest()
             UserObject = User.objects.get_or_create(
                 email=email.lower(), password=password, username=username)
 
