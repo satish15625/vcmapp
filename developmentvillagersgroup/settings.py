@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'home'
+    'home',
 ]
 
 MIDDLEWARE = [
@@ -143,6 +143,7 @@ EMAIL_HOST_USER = 'contact@villagersgroup.com'
 DEFAULT_FROM_EMAIL = 'contact@villagersgroup.com'
 
 EMAIL_HOST_PASSWORD = 'contact@12345'
+
 
 #EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
