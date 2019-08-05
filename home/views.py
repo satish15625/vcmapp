@@ -116,3 +116,10 @@ def gallery(request):
     about_details= About_Details.objects.all().order_by('-id')[:1]
 
     return render(request, 'login/gallery.html',{'gallery':gallery,'category':category,'recent':recentImage,'contact':contact,'about_details':about_details,'logo':logo})
+
+def register(request):
+    
+    """Handle the registration form """
+    contact = ContactHeader.objects.all().order_by('-id')[:1]
+
+    return render(request,'login/register.html',{'contact':contact})

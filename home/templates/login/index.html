@@ -7,11 +7,11 @@
 <!-- //header -->
 
 <!-- banner -->
-<div id="owl-home-page" class="owl-home-page" >
+<div id="owl-home-page" class="owl-home-page"  >
 	{% if banner %}
 		{% for val in banner %}
 			
-			<div class="item active" style="background: -webkit-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url({{ val.banner_img.url}}) no-repeat;">
+			<div class="item active" style="background: -webkit-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url({{ val.banner_img.url}}) no-repeat;height:25em;">
 			<div class="container">
 				<div class="carousel-caption">
 					<div class="col-md-6 banner_left">
@@ -113,7 +113,7 @@
 											<div class="clearfix"></div>
 										</div>
 									</div>
-								</li>
+							</li>
 									{% endfor %}
 
 							{% endif %}
@@ -157,6 +157,9 @@
 	</div>
 </div>
 <!-- //Services -->
+
+
+
 
 <!-- testimonials free consulting -->
 <div class="test_consultant">
