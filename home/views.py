@@ -15,7 +15,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from uuid import uuid4
-import hashlib
+import hashlib,random
 
 
 """
