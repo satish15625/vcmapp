@@ -123,8 +123,12 @@
 						<h3 class="agileinfo_sign">Create Your Account here.</h3>
 						<form action="user-login" method="post">
 							{% csrf_token %}
-							<div class="styled-input agile-styled-input-top">
-								<input type="text" placeholder="Company Name" name="username" required="">
+							<div class="form-group">
+									<label for="sel1">Choose Your Role</label>
+									<select id="sel1" class="form-control" name="username" required="true">
+									  <option value="company">Company</option>
+									  <option value="vendor">Vendor</option>
+									</select>
 							</div>
 							
 							<div class="styled-input agile-styled-input-top">

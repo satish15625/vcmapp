@@ -211,4 +211,11 @@ class Profile(models.Model):
         db_table = 'vg_user_profile'
 
 
+class VendorAds(models.Model):
+    image = models.ImageField(upload_to = "media")
+    title = models.CharField(max_length = 50)
+    desc = models.TextField(null=True)
 
+    class Meta:
+        db_table = "vg_vendor_ads"
+        
