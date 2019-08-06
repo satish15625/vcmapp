@@ -85,16 +85,18 @@ DATABASES = {
     }
 }
 
+
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
+#        'ENGINE': 'django.db.backends.postgresql',
 #        'NAME':'vcm_db',
 #        'USER':'postgres',
-#         'PASSWORD':'admin',
-#          'HOST':'localhost',
-#          'PORT':5433
+#        'PASSWORD':'admin',
+#        'HOST':'localhost',
+#        'PORT':5433
 #      }
 #  }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
