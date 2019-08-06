@@ -4,7 +4,7 @@ view file for handling rendering action
 """
 
 from django.shortcuts import render, redirect
-from .models import Banner, ProfessionTeam, ServicesOffered, HappyClients, AboutUs, SubscriptionPlans, ContactHeader, GalleryContent, About_Details, OurStatistics, Logo, Profile
+from .models import Banner, ProfessionTeam, ServicesOffered, HappyClients, AboutUs, SubscriptionPlans, VendorAds ,ContactHeader, GalleryContent, About_Details, OurStatistics, Logo, Profile
 from .forms import ConsultingForm
 from django.contrib import messages
 from django.core.mail import EmailMessage
@@ -42,6 +42,8 @@ def index(request):
     services = ServicesOffered.objects.all().order_by('-id')[:4]
     statistics = OurStatistics.objects.all()
 
+    vendorAds = VendorAds.objects.all().order_by('-id')
+
     happyclients = HappyClients.objects.all()
 
     consultingInput = ConsultingForm(None)
@@ -62,9 +64,9 @@ def index(request):
             redirect('/')
 
         else:
-            return render(request, "login/index.html", {'form': consultingInput, 'banner': banner, 'professional': professional, 'services': services, 'happyclient': happyclients, 'contact': contact, 'recent': recentImage, 'about_details': about_details, 'statistics': statistics, 'logo': logo})
+            return render(request, "login/index.html", {'form': consultingInput, 'banner': banner, 'professional': professional, 'services': services, 'happyclient': happyclients, 'contact': contact, 'recent': recentImage, 'about_details': about_details, 'statistics': statistics, 'logo': logo,'ads' : VendorAds})
 
-    return render(request, 'login/index.html', {'form': consultingInput, 'banner': banner, 'professional': professional, 'services': services, 'happyclient': happyclients, 'contact': contact, 'recent': recentImage, 'about_details': about_details, 'statistics': statistics, 'logo': logo})
+    return render(request, 'login/index.html', {'form': consultingInput, 'banner': banner, 'professional': professional, 'services': services, 'happyclient': happyclients, 'contact': contact, 'recent': recentImage, 'about_details': about_details, 'statistics': statistics, 'logo': logo,'ads' : VendorAds})
 
 
 @user_passes_test(lambda user: not user.username, login_url='/dashboard', redirect_field_name=None)
@@ -77,7 +79,6 @@ def about(request):
     about_details = About_Details.objects.all().order_by('-id')[:1]
     return render(request, 'login/about.html', {'about': aboutsContent, 'plans': plans, 'contact': contact, 'recent': recentImage, 'about_details': about_details, 'logo': logo})
 
-
 @user_passes_test(lambda user: not user.username, login_url='/dashboard', redirect_field_name=None)
 def services(request):
     logo = Logo.objects.all().first()
@@ -87,7 +88,6 @@ def services(request):
     statistics = OurStatistics.objects.all()
     about_details = About_Details.objects.all().order_by('-id')[:1]
     return render(request, 'login/services.html', {"services": services, 'contact': contact, 'recent': recentImage, 'statistics': statistics, 'about_details': about_details, 'logo': logo})
-
 
 @user_passes_test(lambda user: not user.username, login_url='/dashboard', redirect_field_name=None)
 def contact(request):
@@ -116,7 +116,6 @@ def contact(request):
 
     return render(request, 'login/contact.html', {'form': consultingInput, 'contact': contact, 'recent': recentImage, 'about_details': about_details, 'logo': logo})
 
-
 @user_passes_test(lambda user: not user.username, login_url='/dashboard', redirect_field_name=None)
 def gallery(request):
     """
@@ -135,7 +134,6 @@ def gallery(request):
     about_details = About_Details.objects.all().order_by('-id')[:1]
 
     return render(request, 'login/gallery.html', {'gallery': gallery, 'category': category, 'recent': recentImage, 'contact': contact, 'about_details': about_details, 'logo': logo})
-
 
 def sendUserEmail(request):
     try:
@@ -179,11 +177,9 @@ def sendUserEmail(request):
 
     return JsonResponse(response)
 
-
 """
 login method to for handling user login session 
 """
-
 
 def UserLogin(request):
     logout(request)
@@ -219,8 +215,6 @@ def UserLogin(request):
         else:
             messages.add_message(
                 request, messages.WARNING, 'Your account credentials are not valid')
-
-
 
 @login_required(login_url='/')
 def dashboard(request):
