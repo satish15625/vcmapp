@@ -64,9 +64,9 @@ def index(request):
             redirect('/')
 
         else:
-            return render(request, "login/index.html", {'form': consultingInput, 'banner': banner, 'professional': professional, 'services': services, 'happyclient': happyclients, 'contact': contact, 'recent': recentImage, 'about_details': about_details, 'statistics': statistics, 'logo': logo,'ads' : VendorAds})
+            return render(request, "login/index.html", {'form': consultingInput, 'banner': banner, 'professional': professional, 'services': services, 'happyclient': happyclients, 'contact': contact, 'recent': recentImage, 'about_details': about_details, 'statistics': statistics, 'logo': logo,'vendorAds' : vendorAds})
 
-    return render(request, 'login/index.html', {'form': consultingInput, 'banner': banner, 'professional': professional, 'services': services, 'happyclient': happyclients, 'contact': contact, 'recent': recentImage, 'about_details': about_details, 'statistics': statistics, 'logo': logo,'ads' : VendorAds})
+    return render(request, 'login/index.html', {'form': consultingInput, 'banner': banner, 'professional': professional, 'services': services, 'happyclient': happyclients, 'contact': contact, 'recent': recentImage, 'about_details': about_details, 'statistics': statistics, 'logo': logo,'vendorAds' : vendorAds})
 
 
 @user_passes_test(lambda user: not user.username, login_url='/dashboard', redirect_field_name=None)

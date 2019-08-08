@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from datetime import datetime 
 
 
 # Create your banner modee
@@ -213,8 +214,10 @@ class Profile(models.Model):
 
 class VendorAds(models.Model):
     image = models.ImageField(upload_to = "media")
-    title = models.CharField(max_length = 50)
-    desc = models.TextField(null=True)
+    Company_Name = models.CharField(max_length = 50)
+    ADS_DESC = models.TextField(null=True)
+    datetime = models.DateTimeField(default=datetime.now(), blank=True)
+    
 
     class Meta:
         db_table = "vg_vendor_ads"
