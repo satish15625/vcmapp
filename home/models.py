@@ -40,14 +40,16 @@ class About_Details(models.Model):
     about_service_desc = models.TextField(max_length=200)
 
     #Side Service 2
-    about_service_type1 = models.CharField(max_length=30)
-    about_service_icon1 = models.CharField(max_length=200,choices = ICON_CHOICES)
-    about_service_desc1 = models.TextField(max_length=200)
+    about_service_type1 = models.CharField(max_length=30,null = True)
+    about_service_icon1 = models.CharField(max_length=200,choices = ICON_CHOICES,null = True)
+    about_service_desc1 = models.TextField(max_length=200,null = True)
 
     #Side Service 3
-    about_service_type2 = models.CharField(max_length=30)
-    about_service_icon2 = models.CharField(max_length=200,choices = ICON_CHOICES)
-    about_service_desc2 = models.TextField(max_length=200)
+    about_service_type2 = models.CharField(max_length=30,null = True)
+    about_service_icon2 = models.CharField(max_length=200,choices = ICON_CHOICES,null = True)
+    about_service_desc2 = models.TextField(max_length=200,null = True)
+
+
 class ProfessionTeam(models.Model):
     """
     model class for handling contact header informations
