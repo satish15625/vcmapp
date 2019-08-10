@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import datetime 
+from django.utils.timezone import now
 
 
 # Create your banner modee
@@ -218,7 +219,7 @@ class VendorAds(models.Model):
     image = models.ImageField(upload_to = "media")
     Company_Name = models.CharField(max_length = 50)
     ADS_DESC = models.TextField(null=True)
-    datetime = models.DateTimeField(default=datetime.now(), blank=True)
+    datetime = models.DateTimeField(default=now, blank=True)
     
 
     class Meta:
