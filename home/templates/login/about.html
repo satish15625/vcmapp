@@ -34,20 +34,48 @@
 		{% endfor%}
 		{% for ab in about_details %}
 		<div class="col-md-6 welcome_right">
+
+		    <!-- Service 1-->
 			<div class="inner_grid1">
 				<div class="col-md-2 icon color1">
-					<span class="fa fa-file-o" aria-hidden="true"></span>
+					<span class="fa fa {{ab.about_service_icon}}" aria-hidden="true"></span>
 				</div>
 				
 				<div class="col-md-10 grid_info">
 					<h3>{{ab.about_service_type}}</h3>
 					<p>{{ab.about_service_desc}}</p>
 				</div>
-				
 				<div class="clearfix"></div>
 			</div>
-			
-			
+			  <!-- end Service 1-->
+
+			    <!-- Service 2-->
+			<div class="inner_grid1">
+				<div class="col-md-2 icon color1">
+					<span class="fa fa {{ab.about_service_icon1}}" aria-hidden="true"></span>
+				</div>
+				
+				<div class="col-md-10 grid_info">
+					<h3>{{ab.about_service_type1}}</h3>
+					<p>{{ab.about_service_desc1}}</p>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+			  <!-- end Service 2-->
+
+			    <!-- Service 3-->
+			<div class="inner_grid1">
+				<div class="col-md-2 icon color1">
+					<span class="fa fa {{ab.about_service_icon2}}" aria-hidden="true"></span>
+				</div>
+				
+				<div class="col-md-10 grid_info">
+					<h3>{{ab.about_service_type2}}</h3>
+					<p>{{ab.about_service_desc2}}</p>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+			  <!-- end Service 3-->
 		</div>
 		
 		{% endfor %}
@@ -226,14 +254,16 @@
             <div class="clearfix"> </div>
         </div>
     </div>
-    <div class="footer_w3ls">
-        <div class="container">
-            <div class="footer_bottom1">
-                <p>© 2018 Corporation. All rights reserved | Design by <a href="https://villagersgroup.com">Villagersgroup</a></p>
-            </div>
-        </div>
-    </div>
-    <!-- //footer -->
+ 
+ <!--footer-->
+<div class="footer_w3ls">
+	<div class="container">
+		<div class="footer_bottom1">
+			<p>© 2018 Corporation. All rights reserved | Design by <a href="https://www.codensity.in" target="_blank">Codensity</a></p>
+		</div>
+	</div>
+</div>
+<!-- //footer -->
     
     
    

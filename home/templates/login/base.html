@@ -1,46 +1,33 @@
 <!DOCTYPE html>
 <html>
     {% load static %}
-
 <head>
 	<title>VCM Limited | VillagersGroup</title>
-
-	<link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon"/>
-	<link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/x-icon"/>
+	<link rel="icon" href="{% static 'images/favicon.png' %}" type="image/x-icon"/>
+	<link rel="shortcut icon" href="{% static 'images/favicon.png' %}" type="image/x-icon"/>
 	<!--/tags -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="www.villagersgroup.com, vcm, Marketing ,Shopping Portal"/>
 	<script type="application/x-javascript">
-		addEventListener("load", function () {
-			setTimeout(hideURLbar, 0);
-		}, false);
-
-		function hideURLbar() {
-			window.scrollTo(0, 1);
-		}
+		addEventListener("load", function () {setTimeout(hideURLbar, 0);}, false);function hideURLbar() {window.scrollTo(0, 1);}
 	</script>
 	<!--//tags -->
-	
 	<!-- FlexSlider css -->
 		<link rel="stylesheet" href="{% static 'css/flexslider.css' %}" type="text/css" media="screen" />
 	<!-- //FlexSlider css -->
-
 	<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
 	<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
-	
 	<!-- for bootstrap carousel slider -->
 	<link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}" type="text/css" media="all">
 	<link rel="stylesheet" href="{% static 'css/owl.theme.css' %}" type="text/css" media="all">
 	<!-- //for bootstrap carousel slider -->
-	
 	<!-- fontawesome icons  -->
 	<link href="{% static 'css/font-awesome.css' %}" rel="stylesheet">
 	<!-- google fonts -->
 	<link href="//fonts.googleapis.com/css?family=Nunito+Sans:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext,vietnamese" rel="stylesheet">
 	<link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
 </head>
-
 {% if messages %}
 <ul class="messages">
     {% for message in messages %}
@@ -48,10 +35,8 @@
     {% endfor %}
 </ul>
 {% endif %}
-
 <body>
-
-	<!-- header -->
+<!-- header -->
 <div class="header">
 		<div class="agileits_top_menu">
 		   {% if contact %}
@@ -71,6 +56,9 @@
 						<a class="twitter" href="{{co.twitter_url}}" target="_blank"><i class="fa fa-twitter"></i></a>
 						<a class="linkedin" href="{{co.linkedin_url}}" target="_blank"><i class="fa fa-linkedin"></i></a>
 						<a class="login" href="#" data-toggle="modal" data-target="#myModal1">Join</a>
+
+						
+						<a  class="login"  href="" target="_blank">Visit VCM SHOP</a>
 					</div>
 				</div>
 				
@@ -89,10 +77,9 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				        
-						<a class="navbar-brand" href="/">
-							<img src="{{logo.logo_img.url}}" alt="{{logo.logo_alt}}"  style="width:100;height:3em;"/>
-						</a>
+					<a class="navbar-brand" href="/">
+						<img src="{{logo.logo_img.url}}" alt="{{logo.logo_alt}}"  style="width:100;height:3em;"/>
+					</a>
 					</div>
 					<!--/.navbar-header-->
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -104,6 +91,11 @@
 								<li><a {% if request.resolver_match.url_name == 'gallery' %} class="active" {% endif %} href="/gallery">Gallery</a></li>
 								<!-- <li><a href="/blog">Blog</a></li> -->
 								<li><a {% if request.resolver_match.url_name == 'contact' %} class="active" {% endif %} href="/contact">Contact</a></li>
+								<li><form class="example" action="" style="margin:auto;max-width:300px">
+									<input type="text" placeholder="Search.." name="#">
+									<button type="submit"><i class="fa fa-search"></i></button>
+									</form>
+								</li>
 							</ul>
 						</nav>
 					</div>
@@ -113,15 +105,12 @@
 			</nav>
 		</div>
 	</div>
-    
     {% block content%}
-
     {% endblock %}
 <!-- //bootstrap-modal-pop-up --> 
 
 	{% block customscript %}
 	{% endblock %}
-
 	<div class="modal fade" id="myModal1" tabindex="-1" role="dialog">
 		<div class="modal-dialog">
 			<!-- Modal content-->

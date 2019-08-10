@@ -11,7 +11,7 @@
 	{% if banner %}
 		{% for val in banner %}
 			
-			<div class="item active" style="background: -webkit-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url({{ val.banner_img.url}}) no-repeat;height:25em;">
+			<div class="item active" style="background: -webkit-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url({{ val.banner_img.url}}) no-repeat;height:25em;width:100%">
 			<div class="container">
 				<div class="carousel-caption">
 					<div class="col-md-6 banner_left">
@@ -42,7 +42,7 @@
 		<h3 class="heading">About</h3>
 		
 			{% for ab in about_details %}
-		<div class="col-md-6 welcome_left" style=" background: url({{ ab.about_image.url }}) no-repeat 0px 0px;">
+		<div class="col-md-6 welcome_left" style=" background: url({{ab.about_image.url }}) no-repeat 0px 0px;">
 			<div class="layer1">
 				<div class="welcome_left_info">
 				<h3>{{ab.about_title_name}}</h3>
@@ -56,20 +56,48 @@
 		{% endfor%}
 		{% for ab in about_details %}
 		<div class="col-md-6 welcome_right">
+
+		    <!-- Service 1-->
 			<div class="inner_grid1">
 				<div class="col-md-2 icon color1">
-					<span class="fa fa-file-o" aria-hidden="true"></span>
+					<span class="fa fa {{ab.about_service_icon}}" aria-hidden="true"></span>
 				</div>
 				
 				<div class="col-md-10 grid_info">
 					<h3>{{ab.about_service_type}}</h3>
 					<p>{{ab.about_service_desc}}</p>
 				</div>
-				
 				<div class="clearfix"></div>
 			</div>
-			
-			
+			  <!-- end Service 1-->
+
+			    <!-- Service 2-->
+			<div class="inner_grid1">
+				<div class="col-md-2 icon color1">
+					<span class="fa fa {{ab.about_service_icon1}}" aria-hidden="true"></span>
+				</div>
+				
+				<div class="col-md-10 grid_info">
+					<h3>{{ab.about_service_type1}}</h3>
+					<p>{{ab.about_service_desc1}}</p>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+			  <!-- end Service 2-->
+
+			    <!-- Service 3-->
+			<div class="inner_grid1">
+				<div class="col-md-2 icon color1">
+					<span class="fa fa {{ab.about_service_icon2}}" aria-hidden="true"></span>
+				</div>
+				
+				<div class="col-md-10 grid_info">
+					<h3>{{ab.about_service_type2}}</h3>
+					<p>{{ab.about_service_desc2}}</p>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+			  <!-- end Service 3-->
 		</div>
 		
 		{% endfor %}
@@ -158,8 +186,48 @@
 </div>
 <!-- //Services -->
 
+<!-- company ads  -->
+<div class="team">
+	<h3 class="heading">ADS BY COMPANY</h3>
+	<div class="container">
+		<div class="flexslider-info">
+			<section class="slider">
+				<div class="flexslider">
+					<ul class="slides">
+					{% if vendorAds%}
+					  {% for ads in vendorAds%}
+						<li>
+							<div class="col-md-12">
+									<div class="col-md-12 ">
+										<img src="{{ads.image.url}}" alt="ads1" style="width:100%;height:18em;"/>
+										<br>
+										<h5>{{ads.Company_Name}}</h5>
+										<h4> {{ads.datetime}}</h4>
+										<p> {{ads.ADS_DESC}} </p>
+										
+									</div>
+									<div class="clearfix"></div>
+								</div>
 
+								
+								
+							
+						</li>
 
+						{% endfor %}
+
+						{% endif %}
+
+						
+						
+						
+					</ul>
+				</div>
+			</section>
+		</div>
+	</div>
+</div>
+<!-- //end company ads -->
 
 <!-- testimonials free consulting -->
 <div class="test_consultant">
@@ -345,19 +413,16 @@
 	</div>
 </div>
 
+ <!--footer-->
 <div class="footer_w3ls">
 	<div class="container">
 		<div class="footer_bottom1">
-			<p>© 2018 Corporation. All rights reserved | Design by <a href="#">VCM</a></p>
+			<p>© 2018 Corporation. All rights reserved | Design by <a href="https://www.codensity.in" target="_blank">Codensity</a></p>
 		</div>
 	</div>
 </div>
 <!-- //footer -->
 
-<!-- signin Model -->
-
-<!-- //Modal1 -->
-<!-- //signin Model -->
 	
 <!-- bootstrap-modal-pop-up -->
 {% for val in banner%}

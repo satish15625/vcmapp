@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from datetime import datetime 
+from django.utils.timezone import now
 
 
 # Create your banner modee
@@ -33,10 +35,22 @@ class About_Details(models.Model):
     about_title_name = models.CharField(max_length=30)
     about_image = models.ImageField(upload_to='media')
     about_desc = models.TextField(max_length=200)
-    # Side details 
+
+    # Side service 1
     about_service_type = models.CharField(max_length=30)
     about_service_icon = models.CharField(max_length=200,choices = ICON_CHOICES)
     about_service_desc = models.TextField(max_length=200)
+
+    #Side Service 2
+    about_service_type1 = models.CharField(max_length=30,null = True)
+    about_service_icon1 = models.CharField(max_length=200,choices = ICON_CHOICES,null = True)
+    about_service_desc1 = models.TextField(max_length=200,null = True)
+
+    #Side Service 3
+    about_service_type2 = models.CharField(max_length=30,null = True)
+    about_service_icon2 = models.CharField(max_length=200,choices = ICON_CHOICES,null = True)
+    about_service_desc2 = models.TextField(max_length=200,null = True)
+
 
 class ProfessionTeam(models.Model):
     """
@@ -203,8 +217,10 @@ class Profile(models.Model):
 
 class VendorAds(models.Model):
     image = models.ImageField(upload_to = "media")
-    title = models.CharField(max_length = 50)
-    desc = models.TextField(null=True)
+    Company_Name = models.CharField(max_length = 50)
+    ADS_DESC = models.TextField(null=True)
+    datetime = models.DateTimeField(default=now, blank=True)
+    
 
     class Meta:
         db_table = "vg_vendor_ads"
