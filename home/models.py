@@ -209,6 +209,7 @@ class Profile(models.Model):
     company_name = models.CharField(max_length = 150)
     phone_number = models.CharField(max_length = 20)
     image        = models.ImageField(upload_to = 'media',null=True)
+    password     = models.TextField(null=True)
     address      = models.TextField(null=True)
 
     class Meta:

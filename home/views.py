@@ -204,8 +204,9 @@ def UserLogin(request):
             # store profile information
             company_name = request.POST['username']
             phone_number = request.POST['phone']
+            sha12_password = hashlib.sha256(str.encode(request.POST['password'])).hexdigest() 
             Profile.objects.create(
-                user=UserObject,company_name=company_name, phone_number=phone_number)
+                user=UserObject,company_name=company_name, phone_number=phone_number,password=sha12_password)
        
         user = authenticate(username=username, password=password)
 
