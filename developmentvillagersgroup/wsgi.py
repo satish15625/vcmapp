@@ -9,12 +9,9 @@ https://docs.djangoproject.com/en/2.2/howto/deployment/wsgi/
 
 import os, sys
 
-# add the hellodjango project path into the sys.path
 sys.path.append('/var/www/html/dev-villagersgroups/developmentvillagersgroup/')
 
-# add the virtualenv site-packages path to the sys.path
-sys.path.append('/var/www/html/dev-villagersgroups/developmentvillagersgroup/lib/site-packages')
-
+sys.path.append('/var/www/html/dev-villagersgroups/villagersgroup/lib/python3.6/site-packages')
 
 from django.core.wsgi import get_wsgi_application
 
