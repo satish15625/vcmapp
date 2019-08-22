@@ -8,8 +8,8 @@
 
 <!-- banner -->
 <div class="banner"  style= "background: url({% static 'images/banner1.jpg' %}) 0px 0px no-repeat;">
-	<h2>About</h2>
-	<p><a href="/">Home »</a> About </p>
+	<h2>The Journey of Villagers Group</h2>
+	<p><a href="/">Home »</a> The Journey Of Villagers Group </p>
 </div>
 <!--//banner -->
 
@@ -17,7 +17,7 @@
 <!-- welcome about details -->
 <div class="welcome">
 	<div class="container">
-		<h3 class="heading">About</h3>
+		<h3 class="heading">The Journey Of Villagers Group</h3>
 		
 			{% for ab in about_details %}
 		<div class="col-md-6 welcome_left" style=" background: url({{ab.about_image.url }}) no-repeat 0px 0px;">
@@ -63,7 +63,7 @@
 			</div>
 			  <!-- end Service 2-->
 
-			    <!-- Service 3-->
+			<!-- Service 3-->
 			<div class="inner_grid1">
 				<div class="col-md-2 icon color1">
 					<span class="fa fa {{ab.about_service_icon2}}" aria-hidden="true"></span>
@@ -76,6 +76,34 @@
 				<div class="clearfix"></div>
 			</div>
 			  <!-- end Service 3-->
+
+              <!-- Service 4-->
+			<div class="inner_grid1">
+				<div class="col-md-2 icon color1">
+					<span class="fa fa {{ab.about_service_icon3}}" aria-hidden="true"></span>
+				</div>
+				
+				<div class="col-md-10 grid_info">
+					<h3>{{ab.about_service_type3}}</h3>
+					<p>{{ab.about_service_desc3}}</p>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+			  <!-- end Service 4-->
+
+              <!-- Service 5-->
+			<div class="inner_grid1">
+				<div class="col-md-2 icon color1">
+					<span class="fa fa {{ab.about_service_icon4}}" aria-hidden="true"></span>
+				</div>
+				
+				<div class="col-md-10 grid_info">
+					<h3>{{ab.about_service_type4}}</h3>
+					<p>{{ab.about_service_desc4}}</p>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+			  <!-- end Service 5-->
 		</div>
 		
 		{% endfor %}
@@ -87,7 +115,7 @@
     <!-- Who we are -->
     <div class="who">
         <div class="layer">
-            <h3 class="heading">About Us</h3>
+            <h3 class="heading">The Journey Of Villagers Group</h3>
             {% if about %}
             <div class="container">
                 <div class="who_grids">
@@ -193,7 +221,7 @@
     <div class="footer_top_agileits">
         <div class="container-fluid">
             <div class="col-md-3 footer_grid">
-			<h3>About Us</h3>
+			<h3>The Journey Of Villagers Group</h3>
 			{% for ab in about_details %}
 			<p>{{ab.about_desc}}</p>
 			{% endfor%}
