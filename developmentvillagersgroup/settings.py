@@ -74,27 +74,27 @@ WSGI_APPLICATION = 'developmentvillagersgroup.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME':'villagersgroup_db',
-#         'USER':'root',
-#         'PASSWORD':'root',
-#         'HOST':'127.0.0.1',
-#         'PORT':''
-#     }
-# }
-
 DATABASES = {
     'default': {
-       'ENGINE': 'django.db.backends.postgresql',
-       'NAME':'vcm_db',
-       'USER':'postgres',
-       'PASSWORD':'admin',
-       'HOST':'localhost',
-       'PORT':5433
-     }
- }
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME':'villagersgroup_db',
+        'USER':'root',
+        'PASSWORD':'root',
+        'HOST':'127.0.0.1',
+        'PORT':''
+    }
+}
+
+# DATABASES = {
+#     'default': {
+#        'ENGINE': 'django.db.backends.postgresql',
+#        'NAME':'vcm_db',
+#        'USER':'postgres',
+#        'PASSWORD':'admin',
+#        'HOST':'localhost',
+#        'PORT':5433
+#      }
+#  }
 
 
 
