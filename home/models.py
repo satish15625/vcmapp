@@ -51,6 +51,16 @@ class About_Details(models.Model):
     about_service_icon2 = models.CharField(max_length=200,choices = ICON_CHOICES,null = True)
     about_service_desc2 = models.TextField(max_length=200,null = True)
 
+    #Side Service 4
+    about_service_type3 = models.CharField(max_length=30,null = True)
+    about_service_icon3 = models.CharField(max_length=200,choices = ICON_CHOICES,null = True)
+    about_service_desc3 = models.TextField(max_length=200,null = True)
+
+    #Side Service 5
+    about_service_type4 = models.CharField(max_length=30,null = True)
+    about_service_icon4 = models.CharField(max_length=200,choices = ICON_CHOICES,null = True)
+    about_service_desc4 = models.TextField(max_length=200,null = True)
+
 
 class ProfessionTeam(models.Model):
     """
