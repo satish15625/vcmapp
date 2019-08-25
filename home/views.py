@@ -236,6 +236,14 @@ def UserLogin(request):
             email = EmailMessage(subject, message, to=[email])
             email.send()
 
+            #send email to admin about the new joining
+                
+            emailAdmin = settings.DEFAULT_FROM_EMAIL
+            subjectAdmin = "New user joined shopping portal"
+            messageAdmin = "New user has recently joined :" + request.POST['email']
+            emailAdmin = EmailMessage(subjectAdmin, messageAdmin, to=[emailAdmin])
+            emailAdmin.send()
+
         user = authenticate(username=username, password=password)
 
         if user is not None:
