@@ -4,7 +4,7 @@ view file for handling rendering action
 """
 
 from django.shortcuts import render, redirect
-from .models import Banner, ProfessionTeam, ServicesOffered, HappyClients, AboutUs, SubscriptionPlans, VendorAds ,ContactHeader, GalleryContent, About_Details, OurStatistics, Logo, Profile
+from .models import Banner, ProfessionTeam, ServicesOffered, HappyClients, AboutUs, SubscriptionPlans, VendorAds, ContactHeader, GalleryContent, About_Details, OurStatistics, Logo, Profile
 from .forms import ConsultingForm
 from django.contrib import messages
 from django.core.mail import EmailMessage
@@ -15,7 +15,8 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from uuid import uuid4
-import hashlib,random
+import hashlib
+import random
 
 
 """
@@ -64,9 +65,9 @@ def index(request):
             redirect('/')
 
         else:
-            return render(request, "login/index.html", {'form': consultingInput, 'banner': banner, 'professional': professional, 'services': services, 'happyclient': happyclients, 'contact': contact, 'recent': recentImage, 'about_details': about_details, 'statistics': statistics, 'logo': logo,'vendorAds' : vendorAds})
+            return render(request, "login/index.html", {'form': consultingInput, 'banner': banner, 'professional': professional, 'services': services, 'happyclient': happyclients, 'contact': contact, 'recent': recentImage, 'about_details': about_details, 'statistics': statistics, 'logo': logo, 'vendorAds': vendorAds})
 
-    return render(request, 'login/index.html', {'form': consultingInput, 'banner': banner, 'professional': professional, 'services': services, 'happyclient': happyclients, 'contact': contact, 'recent': recentImage, 'about_details': about_details, 'statistics': statistics, 'logo': logo,'vendorAds' : vendorAds})
+    return render(request, 'login/index.html', {'form': consultingInput, 'banner': banner, 'professional': professional, 'services': services, 'happyclient': happyclients, 'contact': contact, 'recent': recentImage, 'about_details': about_details, 'statistics': statistics, 'logo': logo, 'vendorAds': vendorAds})
 
 
 @user_passes_test(lambda user: not user.username, login_url='/dashboard', redirect_field_name=None)
@@ -79,6 +80,7 @@ def about(request):
     about_details = About_Details.objects.all().order_by('-id')[:1]
     return render(request, 'login/about.html', {'about': aboutsContent, 'plans': plans, 'contact': contact, 'recent': recentImage, 'about_details': about_details, 'logo': logo})
 
+
 @user_passes_test(lambda user: not user.username, login_url='/dashboard', redirect_field_name=None)
 def services(request):
     logo = Logo.objects.all().first()
@@ -88,6 +90,7 @@ def services(request):
     statistics = OurStatistics.objects.all()
     about_details = About_Details.objects.all().order_by('-id')[:1]
     return render(request, 'login/services.html', {"services": services, 'contact': contact, 'recent': recentImage, 'statistics': statistics, 'about_details': about_details, 'logo': logo})
+
 
 @user_passes_test(lambda user: not user.username, login_url='/dashboard', redirect_field_name=None)
 def contact(request):
@@ -116,6 +119,7 @@ def contact(request):
 
     return render(request, 'login/contact.html', {'form': consultingInput, 'contact': contact, 'recent': recentImage, 'about_details': about_details, 'logo': logo})
 
+
 @user_passes_test(lambda user: not user.username, login_url='/dashboard', redirect_field_name=None)
 def gallery(request):
     """
@@ -134,6 +138,7 @@ def gallery(request):
     about_details = About_Details.objects.all().order_by('-id')[:1]
 
     return render(request, 'login/gallery.html', {'gallery': gallery, 'category': category, 'recent': recentImage, 'contact': contact, 'about_details': about_details, 'logo': logo})
+
 
 def sendUserEmail(request):
     try:
@@ -177,9 +182,11 @@ def sendUserEmail(request):
 
     return JsonResponse(response)
 
+
 """
 login method to for handling user login session 
 """
+
 
 def UserLogin(request):
     logout(request)
@@ -204,10 +211,31 @@ def UserLogin(request):
             # store profile information
             company_name = request.POST['username']
             phone_number = request.POST['phone']
-            sha12_password = hashlib.sha256(str.encode(request.POST['password'])).hexdigest() 
+            sha12_password = hashlib.sha256(
+                str.encode(request.POST['password'])).hexdigest()
             Profile.objects.create(
-                user=UserObject,company_name=company_name, phone_number=phone_number,password=sha12_password)
-       
+                user=UserObject, company_name=company_name, phone_number=phone_number, password=sha12_password)
+
+            # send email to client about the url and password to login.
+
+            email = request.POST.get('email')
+            subject = "Welcome To VCM Team. Login detail for shopping portal"
+            message = """
+                            You are now part of our team and we appreciate your efforts to be part our valuable team use below detail to
+                            get started with adding your products.
+
+                            email : %s
+                            
+                            password : %s
+
+                            click here to log in into store panel http://www.villagersgroup.com/shoppingportal/store
+                              
+
+                      """ % (request.POST.get('email'), request.POST.get('password'))
+
+            email = EmailMessage(subject, message, to=[email])
+            email.send()
+
         user = authenticate(username=username, password=password)
 
         if user is not None:
@@ -216,6 +244,7 @@ def UserLogin(request):
         else:
             messages.add_message(
                 request, messages.WARNING, 'Your account credentials are not valid')
+
 
 @login_required(login_url='/')
 def dashboard(request):

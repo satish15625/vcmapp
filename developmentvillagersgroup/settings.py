@@ -144,7 +144,7 @@ EMAIL_HOST_USER = 'contact@villagersgroup.com'
 
 DEFAULT_FROM_EMAIL = 'contact@villagersgroup.com'
 
-EMAIL_HOST_PASSWORD = 'contact@12345'
+EMAIL_HOST_PASSWORD = 'Contact@vg.com123'
 
 
 #EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
