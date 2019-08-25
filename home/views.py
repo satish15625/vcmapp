@@ -225,7 +225,7 @@ def UserLogin(request):
                             get started with adding your products.
 
                             email : %s
-                            
+
                             password : %s
 
                             click here to log in into store panel http://www.villagersgroup.com/shoppingportal/store
@@ -239,15 +239,16 @@ def UserLogin(request):
         user = authenticate(username=username, password=password)
 
         if user is not None:
-            login(request, user)
+            #login(request, user)
             return redirect('/dashboard')
         else:
             messages.add_message(
                 request, messages.WARNING, 'Your account credentials are not valid')
 
 
-@login_required(login_url='/')
+#@login_required(login_url='/')
 def dashboard(request):
+
     return render(request, 'dashboard/index.html')
 
 
