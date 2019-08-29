@@ -64,6 +64,11 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+
+             'libraries':{
+            'bootstrap_admin_template_tags': 'templatetags.bootstrap_admin_template_tags',
+
+            }
         },
     },
 ]
@@ -149,13 +154,15 @@ EMAIL_HOST_PASSWORD = 'Contact@vg.com123'
 
 #EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static")
-]
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, "static")
+# ]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATIC_ROOT =  os.path.join(BASE_DIR, "static")
 
 
