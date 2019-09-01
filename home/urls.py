@@ -28,7 +28,7 @@ urlpatterns = [
     path('send-email',sendUserEmail,name='sendUserEmail'),
     path('user-login',UserLogin,name='UserLogin'),
     path('user-logout',userLogout,name='userLogout'),
-    path('dashboard',dashboard,name="dashboard"),
+    path('successpage',dashboard,name="successpage"),
 
     
     

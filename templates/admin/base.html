@@ -1,4 +1,5 @@
-{% load i18n static bootstrap_admin_template_tags  %}<!DOCTYPE html>
+{% load i18n static bootstrap_admin_template_tags  %}
+  <!DOCTYPE html>
 {% get_current_language as LANGUAGE_CODE %}{% get_current_language_bidi as LANGUAGE_BIDI %}
 <html lang="{{ LANGUAGE_CODE|default:"en-us" }}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}>
 <head>
@@ -11,8 +12,7 @@
   {% endblock bootstrap_admin_css %}
 
   <link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% static 'admin/css/base.css' %}{% endblock %}" />
-  <link rel="stylesheet" type="text/css" href="{% static 'admin/css/datetime_widget.css' %}" />
-
+  
 {% block extrastyle %}{% endblock %}
 
 {% if LANGUAGE_BIDI %}
@@ -188,7 +188,6 @@
 {% block bootstrap_admin_js %}
   <script>if (typeof jQuery === 'undefined' && django && django.jQuery) {jQuery = django.jQuery;}</script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-  <script src="{% static 'bootstrap_admin/js/base.js' %}"></script>
 {% endblock bootstrap_admin_js %}
 
 {% block js %}{% endblock js %}

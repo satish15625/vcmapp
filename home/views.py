@@ -25,7 +25,7 @@ django view function for handling custom login
 """
 
 
-@user_passes_test(lambda user: not user.username, login_url='/dashboard', redirect_field_name=None)
+@user_passes_test(lambda user: not user.username, login_url='/successpage', redirect_field_name=None)
 def index(request):
 
     # home page for showing banner list and image
@@ -70,7 +70,7 @@ def index(request):
     return render(request, 'login/index.html', {'form': consultingInput, 'banner': banner, 'professional': professional, 'services': services, 'happyclient': happyclients, 'contact': contact, 'recent': recentImage, 'about_details': about_details, 'statistics': statistics, 'logo': logo, 'vendorAds': vendorAds})
 
 
-@user_passes_test(lambda user: not user.username, login_url='/dashboard', redirect_field_name=None)
+@user_passes_test(lambda user: not user.username, login_url='/successpage', redirect_field_name=None)
 def about(request):
     logo = Logo.objects.all().first()
     aboutsContent = AboutUs.objects.all().first()
@@ -81,7 +81,7 @@ def about(request):
     return render(request, 'login/about.html', {'about': aboutsContent, 'plans': plans, 'contact': contact, 'recent': recentImage, 'about_details': about_details, 'logo': logo})
 
 
-@user_passes_test(lambda user: not user.username, login_url='/dashboard', redirect_field_name=None)
+@user_passes_test(lambda user: not user.username, login_url='/successpage', redirect_field_name=None)
 def services(request):
     logo = Logo.objects.all().first()
     services = ServicesOffered.objects.all()
@@ -92,7 +92,7 @@ def services(request):
     return render(request, 'login/services.html', {"services": services, 'contact': contact, 'recent': recentImage, 'statistics': statistics, 'about_details': about_details, 'logo': logo})
 
 
-@user_passes_test(lambda user: not user.username, login_url='/dashboard', redirect_field_name=None)
+@user_passes_test(lambda user: not user.username, login_url='/successpage', redirect_field_name=None)
 def contact(request):
     logo = Logo.objects.all().first()
     consultingInput = ConsultingForm(None)
@@ -120,7 +120,7 @@ def contact(request):
     return render(request, 'login/contact.html', {'form': consultingInput, 'contact': contact, 'recent': recentImage, 'about_details': about_details, 'logo': logo})
 
 
-@user_passes_test(lambda user: not user.username, login_url='/dashboard', redirect_field_name=None)
+@user_passes_test(lambda user: not user.username, login_url='/successpage', redirect_field_name=None)
 def gallery(request):
     """
     view class for handling gellery section results based on the cateogory specified
@@ -191,12 +191,15 @@ login method to for handling user login session
 def UserLogin(request):
     logout(request)
     username = password = ''
+    company_name = request.POST['username']
     if request.POST:
         email = request.POST['email']
         password = request.POST['password']
 
         try:
-            username = User.objects.get(email=email.lower()).username
+            
+            username = User.objects.get(username = email.lower()+'_'+company_name)
+          
 
         except User.DoesNotExist:
             username = None
@@ -204,12 +207,12 @@ def UserLogin(request):
         if not username:
 
             # store new registered user into the db.
-            username = email + str(uuid4())
+            username = email + '_' + company_name
             UserObject = User.objects.create_user(
                 email=email.lower(), password=password, username=username)
 
             # store profile information
-            company_name = request.POST['username']
+           
             phone_number = request.POST['phone']
             sha12_password = hashlib.sha256(
                 str.encode(request.POST['password'])).hexdigest()
@@ -248,7 +251,7 @@ def UserLogin(request):
 
         if user is not None:
             #login(request, user)
-            return redirect('/dashboard')
+            return redirect('/successpage')
         else:
             messages.add_message(
                 request, messages.WARNING, 'Your account credentials are not valid')
@@ -256,7 +259,6 @@ def UserLogin(request):
 
 #@login_required(login_url='/')
 def dashboard(request):
-
     return render(request, 'dashboard/index.html')
 
 
