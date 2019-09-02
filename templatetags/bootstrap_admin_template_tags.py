@@ -7,6 +7,7 @@ from django.conf import settings
 from django import template
 from django import VERSION as DJANGO_VERSION
 
+
 # Depending on you python version, reduce has been moved to functools
 try:
     from functools import reduce

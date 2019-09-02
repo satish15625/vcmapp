@@ -200,7 +200,6 @@ def UserLogin(request):
             
             username = User.objects.get(username = email.lower()+'_'+company_name)
           
-
         except User.DoesNotExist:
             username = None
 
@@ -231,10 +230,12 @@ def UserLogin(request):
 
                             password : %s
 
+                            user type : %s
+
                             click here to log in into store panel http://www.villagersgroup.com/shoppingportal/store
                               
 
-                      """ % (request.POST.get('email'), request.POST.get('password'))
+                      """ % (request.POST.get('email'), request.POST.get('password'),company_name)
 
             email = EmailMessage(subject, message, to=[email])
             email.send()
